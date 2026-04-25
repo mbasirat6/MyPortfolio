@@ -237,15 +237,6 @@ export default function MahmoodPortfolio() {
         </div>
       </section>
 
-      {/* POETRY */}
-      <section className="mx-auto max-w-6xl px-6 py-8">
-        <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition hover:-translate-y-1 hover:border-slate-600 hover:shadow-2xl">
-          <h2 className="text-2xl font-semibold">Poetry & Writing</h2>
-          <p className="mt-4 text-slate-300">
-            I write poetry exploring culture, identity, and human emotions. My work connects creativity with deeper meaning.
-          </p>
-        </div>
-      </section>
 
       {/* HOBBIES */}
       <section className="mx-auto max-w-6xl px-6 py-8">

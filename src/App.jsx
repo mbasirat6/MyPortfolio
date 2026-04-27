@@ -62,7 +62,7 @@ export default function MahmoodPortfolio() {
       company: "Freelance | Remote",
       period: "Dec 2025 – Present",
       points: [
-        "Evaluated AI model outputs and provided feedback to improve response quality.",
+        "Evaluated 500+ AI model outputs and provided structured feedback to improve response quality.",
         "Performed annotation, classification, and ranking tasks across text, image, and video datasets.",
         "Identified hallucinations, bias, and factual inconsistencies in AI responses.",
       ],
@@ -72,9 +72,9 @@ export default function MahmoodPortfolio() {
       company: "Harakat | Kabul, Afghanistan",
       period: "May 2024 – 2025",
       points: [
-        "Designed and managed surveys using KOBO.",
-        "Cleaned, validated, and maintained datasets to improve data quality and accuracy.",
-        "Analyzed data using Python and developed Power BI dashboards to track KPIs.",
+        "Designed and managed 10+ surveys using KOBO.",
+        "Cleaned, validated, and maintained datasets to improve data accuracy and reliability.",
+        "Analyzed data using Python and built Power BI dashboards to track KPIs.",
       ],
     },
     {
@@ -82,7 +82,7 @@ export default function MahmoodPortfolio() {
       company: "SPS Sofia Private School | Kabul, Afghanistan",
       period: "Feb 2021 – 2023",
       points: [
-        "Taught students from grade 4 to 12 with a focus on communication and computer skills.",
+        "Taught 100+ students from grade 4 to 12 with a focus on communication and computer skills.",
         "Designed lesson plans, assessments, exam papers, clubs, and student activities.",
         "Collaborated with school staff to improve curriculum and student engagement.",
       ],
@@ -113,13 +113,9 @@ export default function MahmoodPortfolio() {
               <a href="#contact" className="rounded-2xl border border-slate-700 px-5 py-3 transition hover:-translate-y-1 hover:bg-slate-900">
                 Contact
               </a>
-              <button
-                type="button"
-                className="rounded-2xl border border-slate-700 px-5 py-3 cursor-pointer transition hover:-translate-y-1 hover:bg-slate-900"
-                onClick={() => window.open("https://www.linkedin.com/in/mahmood-basirat-788ab1209/", "_blank", "noopener,noreferrer")}
-              >
-                LinkedIn
-              </button>
+              <a href="#experience" className="rounded-2xl border border-slate-700 px-5 py-3 transition hover:-translate-y-1 hover:bg-slate-900">
+                Experience
+              </a>
             </div>
           </div>
 
@@ -139,7 +135,7 @@ export default function MahmoodPortfolio() {
         <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition hover:-translate-y-1 hover:border-slate-600 hover:shadow-2xl">
           <h2 className="text-2xl font-semibold">About Me</h2>
           <p className="mt-4 text-slate-300">
-            I work in AI training, data analysis, and product-focused problem solving. I have experience in improving AI systems, analyzing datasets, and building useful applications.
+           Data Analyst and AI Trainer focused on improving AI systems and building data-driven solutions. Experienced in evaluating LLM outputs, analyzing datasets, and creating dashboards that support real decisions.
           </p>
         </div>
       </section>
@@ -176,7 +172,7 @@ export default function MahmoodPortfolio() {
       </section>
 
       {/* EXPERIENCE */}
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      <section id="experience" className="mx-auto max-w-6xl px-6 py-16">
         <h2 className="text-3xl font-bold">Experience</h2>
         <div className="mt-10 space-y-6">
           {experience.map((item) => (
@@ -216,12 +212,14 @@ export default function MahmoodPortfolio() {
                 ))}
               </div>
 
-              <a
-                href="#"
-                className="mt-4 inline-block text-sm text-blue-400 underline"
-              >
-                View Project
-              </a>
+              {project.title === "Personal Portfolio Website" && (
+                <a
+                  href="#"
+                  className="mt-4 inline-block text-sm text-blue-400 underline"
+                >
+                  View Project
+                </a>
+              )}
             </div>
           ))}
         </div>
@@ -232,7 +230,7 @@ export default function MahmoodPortfolio() {
         <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition hover:-translate-y-1 hover:border-slate-600 hover:shadow-2xl">
           <h2 className="text-2xl font-semibold">Education</h2>
           <p className="mt-4 text-slate-300">
-            Bachelor of Information Technology (Data Science) – American University of Afghanistan
+            <span className="text-slate-400">May 2024</span> – Bachelor of Information Technology (Data Science) – American University of Afghanistan
           </p>
         </div>
       </section>

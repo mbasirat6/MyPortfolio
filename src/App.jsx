@@ -89,6 +89,25 @@ export default function MahmoodPortfolio() {
     },
   ];
 
+  const education = [
+    {
+      degree: "Bachelor of Information Technology (Data Science)",
+      school: "American University of Afghanistan",
+      year: "May 2024",
+    },
+    {
+      degree: "AI and Data Science Training",
+      school: "HBC digital camp, Kabul",
+      detail: "Sponsored by UNDP",
+      year: "Oct 2024 – Nov 2024",
+    },
+    {
+      degree: "Higher Secondary School (FSC)",
+      school: "Rahman Baba High School, Kabul",
+      year: "Dec 2017",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-slate-950 text-white">
       {/* HERO */}
@@ -229,9 +248,16 @@ export default function MahmoodPortfolio() {
       <section className="mx-auto max-w-6xl px-6 py-8">
         <div className="rounded-3xl border border-slate-800 bg-slate-900 p-8 transition hover:-translate-y-1 hover:border-slate-600 hover:shadow-2xl">
           <h2 className="text-2xl font-semibold">Education</h2>
-          <p className="mt-4 text-slate-300">
-            <span className="text-slate-400">May 2024</span> – Bachelor of Information Technology (Data Science) – American University of Afghanistan
-          </p>
+          <div className="mt-6 space-y-4">
+            {education.map((edu) => (
+              <div key={edu.degree} className="border-l-2 border-slate-700 pl-4">
+                <p className="text-slate-400 text-sm">{edu.year}</p>
+                <h3 className="text-lg font-semibold text-white mt-1">{edu.degree}</h3>
+                <p className="text-slate-300">{edu.school}</p>
+                {edu.detail && <p className="text-sm text-slate-400">{edu.detail}</p>}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

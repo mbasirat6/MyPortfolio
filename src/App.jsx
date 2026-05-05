@@ -46,7 +46,7 @@ const experience = [
   },
   {
     role: "Data Analyst",
-    company: "Harakat · Kabul, Afghanistan",
+    company: "NGO · ",
     period: "May 2024 – 2025",
     points: [
       "Designed and managed surveys using KOBO.",
@@ -76,19 +76,19 @@ const projects = [
       "Built a Streamlit app handling 12K+ poems with EDA, sentiment analysis, and similarity search.",
       "Cleaned and processed dataset using Pandas; engineered TF-IDF features for text representation.",
       "Implemented cosine similarity for real-time recommendations with ranked results.",
-      "Created visualizations (distributions, summaries) to support exploratory analysis."
+      "Created visualizations (distributions, summaries) to support exploratory analysis.",
     ],
     tools: ["Python", "Pandas", "TF-IDF", "NLP", "Matplotlib", "Streamlit"],
     result: "Interactive NLP app enabling upload → explore → sentiment → recommendations with similarity scores.",
     proof: "Live UI screenshots + GitHub repo",
-    link: "https://github.com/mbasirat6/English-Poetry-Analysis.git",
+    link: "https://github.com/mbasirat6/English-Poetry-Analysis",
     linkLabel: "View GitHub Repo ↗",
     screenshots: [
       "/screenshots/Home-page.png",
       "/screenshots/home-page-data.png",
       "/screenshots/sentiment-Analysis-page.png",
-      "/screenshots/find-semiler-poem-page.png"
-    ]
+      "/screenshots/find-semiler-poem-page.png",
+    ],
   },
   {
     number: "02",
@@ -98,11 +98,11 @@ const projects = [
     work: [
       "Reviewed 1,000+ AI outputs across text, image, and video tasks.",
       "Applied rubrics to rank responses and identify hallucinations and bias.",
-      "Flagged factual errors and inconsistencies to improve model quality."
+      "Flagged factual errors and inconsistencies to improve model quality.",
     ],
     tools: ["LLM Evaluation", "AI Annotation", "Ranking", "Quality Review"],
     result: "Improved consistency and reliability of AI-generated responses.",
-    proof: "Multimodal AI review experience"
+    proof: "Multimodal AI review experience",
   },
   {
     number: "03",
@@ -112,14 +112,14 @@ const projects = [
     work: [
       "Cleaned and validated KOBO survey data from field operations.",
       "Built dashboards tracking 28K+ beneficiaries, 12K+ services, 8K+ students.",
-      "Analyzed trends by region, time, and sector to support decisions."
+      "Analyzed trends by region, time, and sector to support decisions.",
     ],
     tools: ["Python", "Power BI", "Excel", "KOBO / ODK"],
     result: "Delivered real-world dashboard reporting for NGO programs in Afghanistan.",
     proof: "Dashboard preview available",
     image: "/dashboard.png",
     link: "/dashboard.png",
-    linkLabel: "View Dashboard ↗"
+    linkLabel: "View Dashboard ↗",
   },
   {
     number: "04",
@@ -129,13 +129,13 @@ const projects = [
     work: [
       "Designed customer → order → measurement flows in Figma.",
       "Reduced friction by simplifying order creation steps.",
-      "Planned multilingual UX (Pashto, Dari, English)."
+      "Planned multilingual UX (Pashto, Dari, English).",
     ],
     tools: ["Figma", "UI/UX", "Product Flow", "Multilingual Design"],
     result: "Simplified order creation and measurement tracking for tailors.",
     proof: "Figma design proof available",
     link: "https://www.figma.com/design/pLkHln0OtpNKQpiG37GtMQ/Khayat-Tailor-Management-App",
-    linkLabel: "View Figma Design ↗"
+    linkLabel: "View Figma Design ↗",
   },
   {
     number: "05",
@@ -145,14 +145,14 @@ const projects = [
     work: [
       "Built responsive React UI for desktop and mobile.",
       "Structured sections for quick scanning by recruiters.",
-      "Added navigation, proof sections, and project cards."
+      "Added navigation, proof sections, and project cards.",
     ],
     tools: ["React", "CSS", "Responsive Design", "Frontend"],
     result: "Clear online presence to support job applications.",
     proof: "Source code available",
-    link: "https://github.com/mbasirat6/MyPortfolio",
-    linkLabel: "View GitHub Repo ↗"
-  }
+    link: "https://github.com/mbasirat6/mahmood-basirat-portfolio",
+    linkLabel: "View GitHub Repo ↗",
+  },
 ];
 
 const catColors = {
@@ -268,8 +268,8 @@ export default function MahmoodPortfolio() {
     setMenuOpen(false);
     setTimeout(() => {
       const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: "smooth" });
-    }, 250);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 120);
   };
 
   return (
@@ -320,6 +320,7 @@ export default function MahmoodPortfolio() {
         .animate-delay-1 { transition-delay: 0.1s; }
         .animate-delay-2 { transition-delay: 0.2s; }
         .animate-delay-3 { transition-delay: 0.3s; }
+        .animate-delay-4 { transition-delay: 0.4s; }
 
         .nav {
           position: fixed;
@@ -366,20 +367,6 @@ export default function MahmoodPortfolio() {
         .nav-links a:hover,
         .nav-links a.active {
           color: var(--accent);
-        }
-
-        .nav-cta {
-          background: var(--accent);
-          color: #ffffff !important;
-          padding: 8px 16px;
-          border-radius: 8px;
-          box-shadow: 0 8px 20px rgba(77, 158, 255, 0.22);
-        }
-
-        .nav-cta:hover {
-          background: var(--accent-hover);
-          color: #ffffff !important;
-          transform: translateY(-1px);
         }
 
         .hamburger {
@@ -641,6 +628,20 @@ export default function MahmoodPortfolio() {
           border-radius: 10px;
           padding: 12px 8px;
           text-align: center;
+          cursor: pointer;
+          font-family: inherit;
+          transition: 0.2s;
+        }
+
+        .stat:hover {
+          border-color: var(--accent);
+          transform: translateY(-2px);
+          box-shadow: 0 10px 24px rgba(77, 158, 255, 0.12);
+        }
+
+        .stat:focus-visible {
+          outline: 2px solid var(--accent);
+          outline-offset: 3px;
         }
 
         .stat-num {
@@ -665,6 +666,7 @@ export default function MahmoodPortfolio() {
           max-width: 1120px;
           margin: 0 auto;
           padding: 72px 48px;
+          scroll-margin-top: 85px;
         }
 
         .divider {
@@ -746,76 +748,6 @@ export default function MahmoodPortfolio() {
           font-size: 0.95rem;
           color: var(--text-secondary);
           line-height: 1.8;
-        }
-
-        .proof-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 14px;
-          margin-bottom: 14px;
-        }
-
-        .proof-card {
-          padding: 24px;
-        }
-
-        .proof-num {
-          font-family: var(--mono);
-          font-size: 1.6rem;
-          font-weight: 700;
-          color: var(--accent);
-          margin-bottom: 8px;
-        }
-
-        .proof-title {
-          font-size: 0.98rem;
-          font-weight: 700;
-          color: #ffffff;
-          margin-bottom: 8px;
-        }
-
-        .proof-desc {
-          font-size: 0.86rem;
-          color: var(--text-secondary);
-          line-height: 1.7;
-        }
-
-        .evidence-box {
-          background: linear-gradient(135deg, rgba(77, 158, 255, 0.12), rgba(129, 140, 248, 0.08));
-          border: 1px solid rgba(77, 158, 255, 0.28);
-          border-radius: 14px;
-          padding: 24px;
-          display: grid;
-          grid-template-columns: 1.2fr 1fr;
-          gap: 22px;
-          align-items: center;
-        }
-
-        .evidence-title {
-          font-size: 1rem;
-          font-weight: 700;
-          margin-bottom: 8px;
-        }
-
-        .evidence-text {
-          font-size: 0.9rem;
-          color: var(--text-secondary);
-          line-height: 1.75;
-        }
-
-        .evidence-list {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-        }
-
-        .evidence-item {
-          font-size: 0.86rem;
-          color: var(--text-secondary);
-          background: rgba(13, 17, 23, 0.55);
-          border: 1px solid var(--border);
-          border-radius: 8px;
-          padding: 10px 12px;
         }
 
         .legend {
@@ -1010,6 +942,13 @@ export default function MahmoodPortfolio() {
           font-weight: 700;
         }
 
+        .project-work-list {
+          padding-left: 20px;
+          color: var(--text-secondary);
+          font-size: 0.9rem;
+          line-height: 1.7;
+        }
+
         .project-proof-note {
           display: inline-flex;
           align-items: center;
@@ -1061,10 +1000,6 @@ export default function MahmoodPortfolio() {
           background: #f59e0b;
           border-color: #f59e0b;
           transform: translateY(-1px);
-        }
-
-        .case-study-box.open {
-          max-height: 300px;
         }
 
         .gallery-btn {
@@ -1304,8 +1239,6 @@ export default function MahmoodPortfolio() {
           .wrap { padding: 52px 20px; }
           .about-grid,
           .projects-grid,
-          .proof-grid,
-          .evidence-box,
           .hire-grid,
           .hobbies-grid {
             grid-template-columns: 1fr;
@@ -1327,11 +1260,13 @@ export default function MahmoodPortfolio() {
               ✕
             </button>
             <a href="#about" onClick={(event) => { event.preventDefault(); scrollTo("about"); }}>About</a>
+            <a href="#skills" onClick={(event) => { event.preventDefault(); scrollTo("skills"); }}>Skills</a>
+            <a href="#tools" onClick={(event) => { event.preventDefault(); scrollTo("tools"); }}>Tools</a>
             <a href="#experience" onClick={(event) => { event.preventDefault(); scrollTo("experience"); }}>Experience</a>
             <a href="#projects" onClick={(event) => { event.preventDefault(); scrollTo("projects"); }}>Projects</a>
             <a href="#education" onClick={(event) => { event.preventDefault(); scrollTo("education"); }}>Education</a>
             <a href="#contact" onClick={(event) => { event.preventDefault(); scrollTo("contact"); }}>Contact</a>
-            </div>
+          </div>
         </div>
 
         <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
@@ -1341,7 +1276,7 @@ export default function MahmoodPortfolio() {
             <a href="#experience" onClick={(event) => { event.preventDefault(); scrollTo("experience"); }} className={activeSection === "experience" ? "active" : ""}>Experience</a>
             <a href="#projects" onClick={(event) => { event.preventDefault(); scrollTo("projects"); }} className={activeSection === "projects" ? "active" : ""}>Projects</a>
             <a href="#education" onClick={(event) => { event.preventDefault(); scrollTo("education"); }} className={activeSection === "education" ? "active" : ""}>Education</a>
-            </div>
+          </div>
           <button
             className={`hamburger ${menuOpen ? "open" : ""}`}
             type="button"
@@ -1378,7 +1313,7 @@ export default function MahmoodPortfolio() {
               </div>
 
               <div style={{ marginTop: "24px" }}>
-                <a href="#contact" onClick={(e)=>{e.preventDefault(); scrollTo("contact");}} className="btn-primary">
+                <a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo("contact"); }} className="btn-primary">
                   Hire Me
                 </a>
               </div>
@@ -1392,10 +1327,22 @@ export default function MahmoodPortfolio() {
                 <div className="profile-sub">Kabul, Afghanistan · Remote</div>
               </div>
               <div className="profile-stats">
-                <div className="stat"><span className="stat-num">3+</span><span className="stat-label">Years</span></div>
-                <div className="stat"><span className="stat-num">5</span><span className="stat-label">Projects</span></div>
-                <div className="stat"><span className="stat-num">12+</span><span className="stat-label">Tools</span></div>
-                <div className="stat"><span className="stat-num">6</span><span className="stat-label">Languages</span></div>
+                <button type="button" className="stat" onClick={() => scrollTo("experience")} aria-label="Go to experience section">
+                  <span className="stat-num">3+</span>
+                  <span className="stat-label">Years</span>
+                </button>
+                <button type="button" className="stat" onClick={() => scrollTo("projects")} aria-label="Go to projects section">
+                  <span className="stat-num">5</span>
+                  <span className="stat-label">Projects</span>
+                </button>
+                <button type="button" className="stat" onClick={() => scrollTo("tools")} aria-label="Go to tools section">
+                  <span className="stat-num">12+</span>
+                  <span className="stat-label">Tools</span>
+                </button>
+                <button type="button" className="stat" onClick={() => scrollTo("skills")} aria-label="Go to languages and skills section">
+                  <span className="stat-num">6</span>
+                  <span className="stat-label">Languages</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1419,11 +1366,7 @@ export default function MahmoodPortfolio() {
 
         <div className="divider" />
 
-        
-
-        <div className="divider" />
-
-        <section className="wrap">
+        <section id="skills" className="wrap">
           <SectionHeader number="04" title="Skills" />
           <div className="legend animate animate-delay-1">
             {[
@@ -1453,7 +1396,7 @@ export default function MahmoodPortfolio() {
 
         <div className="divider" />
 
-        <section className="wrap">
+        <section id="tools" className="wrap">
           <SectionHeader number="05" title="Tools & Technologies" />
           <div className="tools-grid animate animate-delay-1">
             {tools.map((tool) => <div key={tool} className="tool-card">{tool}</div>)}
@@ -1533,6 +1476,7 @@ export default function MahmoodPortfolio() {
                 <div className="project-tools">
                   {project.tools.map((tool) => <span key={tool} className="project-tool">{tool}</span>)}
                 </div>
+
                 {project.number === "03" && (
                   <div style={{ marginTop: "18px" }}>
                     <button
@@ -1579,9 +1523,9 @@ export default function MahmoodPortfolio() {
                         color: "var(--text-secondary)",
                         lineHeight: "1.7"
                       }}>
-                        <strong>Problem:</strong> NGO needed structured reporting for health and education survey data.<br/>
-                        <strong>Data:</strong> Field survey data collected using KOBO across multiple regions.<br/>
-                        <strong>Process:</strong> Cleaned data → validated entries → analyzed trends → built dashboard.<br/>
+                        <strong>Problem:</strong> NGO needed structured reporting for health and education survey data.<br />
+                        <strong>Data:</strong> Field survey data collected using KOBO across multiple regions.<br />
+                        <strong>Process:</strong> Cleaned data → validated entries → analyzed trends → built dashboard.<br />
                         <strong>Impact:</strong> Enabled tracking of beneficiaries, services, and program performance for reporting.
                       </div>
                     </div>
@@ -1618,7 +1562,6 @@ export default function MahmoodPortfolio() {
           <SectionHeader number="08" title="Education" />
 
           <div className="exp-stack">
-            {/* Bachelor */}
             <div className="edu-card animate animate-delay-1">
               <div className="edu-icon">🎓</div>
               <div>
@@ -1628,7 +1571,6 @@ export default function MahmoodPortfolio() {
               </div>
             </div>
 
-            {/* AI Training */}
             <div className="edu-card animate animate-delay-2">
               <div className="edu-icon">🤖</div>
               <div>
@@ -1638,20 +1580,18 @@ export default function MahmoodPortfolio() {
               </div>
             </div>
 
-            {/* YSEL Training */}
             <div className="edu-card animate animate-delay-3">
               <div className="edu-icon">🌍</div>
               <div>
                 <div className="edu-degree">Youth Solidarity & English Language (YSEL)</div>
                 <div className="edu-school">U.S. Embassy Kabul · Antalya, Turkey</div>
                 <div className="edu-year">Feb 9 – Mar 9, 2016 · 1-month intensive program</div>
-                <div style={{marginTop:"6px", fontSize:"0.82rem", color:"var(--text-secondary)", lineHeight:"1.6"}}>
+                <div style={{ marginTop: "6px", fontSize: "0.82rem", color: "var(--text-secondary)", lineHeight: "1.6" }}>
                   Strengthened English communication, cross-cultural collaboration, and leadership through workshops, group projects, and international teamwork.
                 </div>
               </div>
             </div>
 
-            {/* High School */}
             <div className="edu-card animate animate-delay-4">
               <div className="edu-icon">🏫</div>
               <div>

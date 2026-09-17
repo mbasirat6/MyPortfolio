@@ -1,0 +1,75 @@
+.marif-case { padding: clamp(22px, 4vw, 44px) !important; overflow-wrap: anywhere; }
+.marif-eyebrow { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; color: #91bfff; font: 500 11px/1.6 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
+.marif-status { color: #b8dacd; border: 1px solid #42655c; border-radius: 30px; padding: 5px 10px; background: #17332f; }
+.marif-title { font-size: clamp(40px, 6vw, 64px); letter-spacing: -.055em; margin: 26px 0 6px; line-height: 1.1; font-weight: 800; }
+.marif-subtitle { font-size: clamp(19px, 3vw, 28px); line-height: 1.35; color: #edf3ff; font-weight: 600; letter-spacing: -.025em; }
+.marif-intro { max-width: 780px; margin-top: 20px; font-size: 16px; color: #cdd5e0; line-height: 1.85; }
+.marif-facts { display: grid; grid-template-columns: 1.2fr 1.1fr .8fr; gap: 24px; padding: 26px 0; margin: 28px 0 0; border-top: 1px solid #3b4b64; border-bottom: 1px solid #3b4b64; }
+.marif-facts dt, .marif-kicker { display: block; color: #91bfff; font: 500 11px/1.6 var(--mono); letter-spacing: .075em; text-transform: uppercase; }
+.marif-facts dd { margin: 8px 0 0; color: #d8e1ef; font-size: 13px; line-height: 1.7; }
+.marif-case h4 { color: #fff; font-size: clamp(20px, 2.7vw, 27px); line-height: 1.35; letter-spacing: -.025em; font-weight: 700; margin: 10px 0 20px; }
+.marif-map-story { display: grid; grid-template-columns: 1.45fr .85fr; gap: clamp(24px, 4vw, 48px); align-items: center; padding: 44px 0; }
+.marif-map-story p, .marif-decision-body p, .marif-research > p { font-size: 14px; line-height: 1.85; color: #cdd5e0; margin-top: 14px; }
+.marif-design-note { border-left: 3px solid #65aeff; background: #12243a; padding: 18px 20px; margin-top: 24px; border-radius: 0 12px 12px 0; }
+.marif-design-note > strong { color: #e7f1ff; font-size: 14px; }
+.marif-design-note p { margin-top: 8px; }
+.marif-case .marif-caveat { color: #aebdd0; font-size: 12px; line-height: 1.8; }
+.marif-map-figure { min-width: 0; margin: 0; }
+.marif-image-button { display: block; width: 100%; position: relative; background: #0d1422; border: 1px solid #34465f; border-radius: 18px; padding: 8px 10px 16px; cursor: zoom-in; color: #d6e9ff; transition: border-color .2s; }
+.marif-image-button:hover { border-color: #70b2ff; }
+.marif-image-button img { width: 100%; height: auto; display: block; border-radius: 10px; }
+.marif-enlarge { display: block; font: 500 11px/1.6 var(--mono); margin-top: 4px; }
+.marif-map-figure figcaption { font-size: 12px; color: #aebdd0; line-height: 1.7; margin: 12px 4px 0; }
+.marif-context { padding: 26px; border: 1px solid #3a506c; background: #121d2e; border-radius: 14px; }
+.marif-context h4 { font-size: 17px; margin: 0 0 22px; }
+.marif-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; list-style: none; padding: 0; }
+.marif-flow li { border-top: 1px solid #496185; padding-top: 12px; }
+.marif-flow span { display: block; color: #8cbbfa; font: 12px/1.6 var(--mono); margin-bottom: 8px; }
+.marif-flow strong { display: block; font-size: 13px; color: #e8f1ff; }
+.marif-flow p { color: #b8c7da; font-size: 12px; line-height: 1.75; margin-top: 6px; }
+.marif-context > p { margin-top: 20px; }
+.marif-decisions, .marif-evidence, .marif-research { padding-top: 44px; }
+.marif-decision { border-top: 1px solid #394a62; }
+.marif-decision:last-child { border-bottom: 1px solid #394a62; }
+.marif-decision summary { display: flex; align-items: baseline; gap: 16px; padding: 20px 2px; cursor: pointer; list-style: none; font-size: 16px; line-height: 1.5; color: #edf3fc; font-weight: 600; }
+.marif-decision summary::-webkit-details-marker { display: none; }
+.marif-decision summary::after { content: '+'; margin-left: auto; color: #96c2ff; font-size: 22px; }
+.marif-decision[open] summary::after { content: '−'; }
+.marif-decision-number { flex-shrink: 0; white-space: nowrap; color: #8ebcff; font: 12px/1.6 var(--mono); }
+.marif-decision small { display: block; color: #9cacbf; font: 11px/1.8 var(--mono); margin-top: 4px; }
+.marif-decision-body { padding: 0 36px 24px; max-width: 800px; }
+.marif-decision-body p:first-child { margin-top: 0; }
+.marif-capture-note { color: #aab9ce; font-size: 12px; line-height: 1.75; max-width: 720px; }
+.marif-screens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; margin-top: 24px; }
+.marif-screens figure { margin: 0; min-width: 0; }
+.marif-screens figcaption { margin-top: 18px; }
+.marif-screens figcaption strong { font-size: 14px; line-height: 1.6; display: block; color: #e9f1fc; }
+.marif-screens figcaption p { color: #b7c5d8; font-size: 12px; line-height: 1.8; margin-top: 8px; }
+.marif-research { margin-top: 40px; padding: 28px; border-radius: 14px; background: #142934; border: 1px solid #345463; }
+.marif-research h4 { margin-bottom: 12px; }
+.marif-evaluation-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; border-top: 1px solid #365562; margin-top: 24px; padding-top: 20px; }
+.marif-evaluation-grid strong { display: block; font-size: 13px; color: #b5e1d6; }
+.marif-evaluation-grid span { display: block; font-size: 12px; color: #c0d3dc; line-height: 1.8; margin-top: 8px; }
+.marif-lightbox { position: fixed; inset: 0; margin: auto; width: min(680px, calc(100vw - 24px)); max-height: calc(100dvh - 24px); overflow: auto; background: #111b2b; border: 1px solid #536b8a; border-radius: 18px; padding: 0; color: #eef4ff; }
+.marif-lightbox::backdrop { background: rgba(4, 8, 15, .9); }
+.marif-lightbox-inner { padding: 22px; }
+.marif-lightbox header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.marif-lightbox header h4 { font-size: 18px; margin: 0; }
+.marif-lightbox button { min-height: 44px; padding: 8px 14px; border: 1px solid #536b8a; border-radius: 8px; background: #1b2b41; color: #ecf5ff; font: inherit; cursor: pointer; }
+.marif-lightbox img { display: block; max-height: 65dvh; max-width: 100%; width: auto; height: auto; margin: 18px auto; }
+.marif-lightbox p { font-size: 13px; line-height: 1.75; color: #c5d3e5; margin: 10px 0; }
+.marif-lightbox nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 18px; font-size: 13px; }
+.marif-case button:focus-visible, .marif-case summary:focus-visible { outline: 2px solid #8cc6ff; outline-offset: 5px; }
+@media (max-width: 768px) {
+  .marif-map-story { grid-template-columns: 1fr; }
+  .marif-map-figure { width: min(100%, 330px); margin: 0 auto; }
+  .marif-facts { grid-template-columns: 1fr; gap: 18px; }
+  .marif-flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .marif-screens { grid-template-columns: 1fr; gap: 32px; }
+  .marif-screens figure { max-width: 330px; margin: 0 auto; }
+  .marif-evaluation-grid { grid-template-columns: 1fr; gap: 16px; }
+  .marif-research, .marif-context { padding: 20px; }
+  .marif-decision-body { padding-left: 0; padding-right: 0; }
+  .marif-decision summary { font-size: 15px; }
+}
+@media (prefers-reduced-motion: reduce) { .marif-case, .marif-case * { transition: none !important; scroll-behavior: auto !important; } }

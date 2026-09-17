@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import MarifCaseStudy from "./MarifCaseStudy";
 
 const skills = [
   { name: "Data Analysis", cat: "data" },
@@ -67,6 +68,24 @@ const experience = [
 ];
 
 const projects = [
+  {
+    id: "marif",
+    featured: true,
+    category: "AI & Education",
+    title: "Marif — Learning in Pashto and Dari",
+    goal: "Make the Afghan secondary-school curriculum easier to study through textbook access, practice, and contextual AI support.",
+    work: [
+      "Developed a mobile-first React application around official school textbooks for Grades 10–12.",
+      "Built textbook reading, chapter exercises, quizzes, and curriculum search into connected study flows.",
+      "Integrated a Gemini-powered tutor with textbook and exercise context, chat history, and chapter maps.",
+      "Created English, Dari, and Pashto interfaces with right-to-left layouts for Dari and Pashto.",
+    ],
+    tools: ["React", "Vite", "Gemini", "Curriculum data", "Multilingual UX"],
+    resultLabel: "Current work",
+    result: "An ongoing education platform bringing textbook study, practice, and AI assistance into one learning experience.",
+    proof: "Independent project · In active development",
+    reflection: "Building Marif has made reliability, language access, and affordability central to my work. My next research step is to evaluate the quality of its explanations and learn how students and teachers would shape its design. Learning outcomes have not yet been established.",
+  },
   {
     number: "01",
     category: "Data Science",
@@ -889,6 +908,49 @@ export default function MahmoodPortfolio() {
           box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
         }
 
+        .project-card-featured {
+          grid-column: 1 / -1;
+          border-color: rgba(77, 158, 255, 0.6);
+          background: linear-gradient(120deg, #19283d, var(--surface));
+          scroll-margin-top: 100px;
+        }
+
+        .project-card-featured .project-title-clean {
+          font-size: clamp(1.4rem, 3vw, 2rem);
+        }
+
+        .project-card-featured .project-work-list {
+          columns: 2;
+          column-gap: 40px;
+        }
+
+        .project-card-featured .project-work-list li {
+          break-inside: avoid;
+          margin-bottom: 10px;
+        }
+
+        .project-reflection {
+          margin-top: 20px;
+          padding-top: 18px;
+          border-top: 1px solid var(--border);
+          color: var(--text-secondary);
+          font-size: 0.9rem;
+          line-height: 1.8;
+        }
+
+        .project-reflection summary {
+          cursor: pointer;
+          color: var(--accent);
+          font-weight: 600;
+        }
+
+        .project-reflection p { margin-top: 12px; max-width: 800px; }
+        .hero-marif-link { margin-left: 18px; color: var(--accent); font-weight: 600; }
+        .hero-marif-link:focus-visible, .project-reflection summary:focus-visible {
+          outline: 2px solid var(--accent);
+          outline-offset: 5px;
+        }
+
         .project-top-row {
           display: flex;
           justify-content: space-between;
@@ -1229,6 +1291,8 @@ export default function MahmoodPortfolio() {
         }
 
         @media (max-width: 768px) {
+          .project-card-featured .project-work-list { columns: 1; }
+          .project-card-featured .project-top-row { flex-wrap: wrap; }
           .nav { padding: 14px 20px; }
           .nav.scrolled { padding: 11px 20px; }
           .nav-links { display: none; }
@@ -1316,6 +1380,9 @@ export default function MahmoodPortfolio() {
                 <a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo("contact"); }} className="btn-primary">
                   Hire Me
                 </a>
+                <a href="#marif" onClick={(e) => { e.preventDefault(); scrollTo("marif"); }} className="hero-marif-link">
+                  Explore Marif →
+                </a>
               </div>
             </div>
 
@@ -1332,7 +1399,7 @@ export default function MahmoodPortfolio() {
                   <span className="stat-label">Years</span>
                 </button>
                 <button type="button" className="stat" onClick={() => scrollTo("projects")} aria-label="Go to projects section">
-                  <span className="stat-num">5</span>
+                  <span className="stat-num">{projects.length}</span>
                   <span className="stat-label">Projects</span>
                 </button>
                 <button type="button" className="stat" onClick={() => scrollTo("tools")} aria-label="Go to tools section">
@@ -1432,12 +1499,12 @@ export default function MahmoodPortfolio() {
           </div>
 
           <div className="projects-grid">
-            {projects.map((project, index) => (
-              <article key={project.title} className={`project-card-clean animate animate-delay-${(index % 2) + 1}`}>
+            {projects.map((project, index) => project.id === "marif" ? <MarifCaseStudy key="marif" /> : (
+              <article id={project.id} key={project.title} className={`project-card-clean ${project.featured ? "project-card-featured" : ""} animate animate-delay-${(index % 2) + 1}`}>
                 <div className="project-top-row">
                   <div className="project-category">{project.category}</div>
                   <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    {project.number === "01" && (
+                    {project.featured && (
                       <span style={{
                         fontSize: "0.65rem",
                         background: "#f59e0b",
@@ -1449,7 +1516,7 @@ export default function MahmoodPortfolio() {
                         ⭐ FEATURED
                       </span>
                     )}
-                    <div className="project-number">PROJECT {project.number}</div>
+                    <div className="project-number">PROJECT {String(index + 1).padStart(2, "0")}</div>
                   </div>
                 </div>
 
@@ -1468,7 +1535,7 @@ export default function MahmoodPortfolio() {
                 </div>
 
                 <div className="project-block">
-                  <div className="project-block-label">Result</div>
+                  <div className="project-block-label">{project.resultLabel || "Result"}</div>
                   <div className="project-result-clean">{project.result}</div>
                   {project.proof ? <div className="project-proof-note">● {project.proof}</div> : null}
                 </div>
@@ -1476,6 +1543,13 @@ export default function MahmoodPortfolio() {
                 <div className="project-tools">
                   {project.tools.map((tool) => <span key={tool} className="project-tool">{tool}</span>)}
                 </div>
+
+                {project.reflection && (
+                  <details className="project-reflection">
+                    <summary>What I want to investigate next</summary>
+                    <p>{project.reflection}</p>
+                  </details>
+                )}
 
                 {project.number === "03" && (
                   <div style={{ marginTop: "18px" }}>

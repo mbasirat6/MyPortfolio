@@ -1,0 +1,20 @@
+.case-page-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px 24px; padding: 22px max(24px, calc((100vw - 1080px) / 2)); border-bottom: 1px solid var(--border); background: #0b1018; }
+.case-page-header a { color: #bdd8fc; text-decoration: none; font-size: 13px; min-height: 44px; display: inline-flex; align-items: center; }
+.case-page-header .case-page-brand { font: 600 14px/1.6 var(--mono); color: #75b5ff; }
+.case-page-main { max-width: 1128px; margin: 0 auto; padding: 28px 24px 48px; }
+.case-page-contents { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 24px; margin-bottom: 24px; font-size: 12px; }
+.case-page-contents span { color: #9fadc0; }
+.case-page-contents a { display: inline-flex; align-items: center; min-height: 44px; color: #c2dbfc; text-decoration: none; }
+.case-page-main .marif-case { border: 1px solid #344963; border-radius: 18px; background: linear-gradient(120deg, #19283d, var(--surface)); }
+.marif-page-intro { margin-top: 28px; max-width: 780px; }
+.marif-page-intro .marif-title { font-size: clamp(44px, 7vw, 72px); }
+.marif-page-intro .marif-summary { max-width: 700px; font-size: 16px; }
+.case-page-main :is(h2, article) { scroll-margin-top: 24px; }
+.case-page-main .marif-image-button { font-family: inherit; }
+.case-page-footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; color: #a8bad2; font-size: 12px; }
+.case-page-header a:hover, .case-page-contents a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.case-page-header a:focus-visible, .case-page-contents a:focus-visible, .case-skip-link:focus-visible { outline: 2px solid #8cc6ff; outline-offset: 5px; }
+.case-skip-link { position: fixed; top: -100px; left: 16px; z-index: 200; padding: 12px 18px; background: #91c4ff; color: #081322; border-radius: 8px; }
+.case-skip-link:focus { top: 12px; }
+@media (max-width: 600px) { .case-page-main { padding: 20px 14px 32px; } .case-page-contents { gap: 0 18px; } .case-page-contents span { width: 100%; } .case-page-header { padding: 12px 20px; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

@@ -1,13 +1,25 @@
 .marif-case { padding: clamp(22px, 4vw, 44px) !important; overflow-wrap: anywhere; }
 .marif-eyebrow { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; color: #91bfff; font: 500 11px/1.6 var(--mono); letter-spacing: .05em; text-transform: uppercase; }
 .marif-status { color: #b8dacd; border: 1px solid #42655c; border-radius: 30px; padding: 5px 10px; background: #17332f; }
-.marif-title { font-size: clamp(40px, 6vw, 64px); letter-spacing: -.055em; margin: 26px 0 6px; line-height: 1.1; font-weight: 800; }
-.marif-subtitle { font-size: clamp(19px, 3vw, 28px); line-height: 1.35; color: #edf3ff; font-weight: 600; letter-spacing: -.025em; }
-.marif-intro { max-width: 780px; margin-top: 20px; font-size: 16px; color: #cdd5e0; line-height: 1.85; }
+.marif-title { font-size: clamp(34px, 4vw, 46px); letter-spacing: -.055em; margin: 0 0 8px; line-height: 1.1; font-weight: 800; }
+.marif-subtitle { font-size: clamp(18px, 2vw, 23px); line-height: 1.35; color: #edf3ff; font-weight: 600; letter-spacing: -.025em; }
+.marif-overview { display: grid; grid-template-columns: minmax(0, 1fr) 210px; gap: 36px; align-items: center; margin-top: 26px; }
+.marif-summary { color: #cdd5e0; font-size: 14px; line-height: 1.75; margin-top: 14px; max-width: 560px; }
+.marif-role { color: #afbed1; font-size: 12px; line-height: 1.7; margin-top: 14px; }
+.marif-role strong { color: #e2ebf8; margin-right: 6px; }
+.marif-highlights { list-style: none; padding: 0; margin: 20px 0 24px; display: grid; gap: 12px; }
+.marif-highlights li { padding-left: 13px; border-left: 2px solid #588cc9; }
+.marif-highlights strong { display: block; color: #ecf3ff; font-size: 13px; line-height: 1.5; }
+.marif-highlights span { display: block; color: #b5c4d8; font-size: 12px; line-height: 1.6; margin-top: 2px; }
+.marif-overview-figure { min-width: 0; margin: 0; }
+.marif-case-toggle { display: inline-flex; align-items: center; min-height: 44px; padding: 11px 18px; border: 1px solid #76b7ff; border-radius: 9px; color: #081322; background: #91c4ff; font: 600 13px/1.5 var(--sans, sans-serif); cursor: pointer; text-decoration: none; }
+.marif-case-toggle:hover { background: #b4d7ff; }
+.marif-close-case { margin-top: 24px; }
+
 .marif-facts { display: grid; grid-template-columns: 1.2fr 1.1fr .8fr; gap: 24px; padding: 26px 0; margin: 28px 0 0; border-top: 1px solid #3b4b64; border-bottom: 1px solid #3b4b64; }
 .marif-facts dt, .marif-kicker { display: block; color: #91bfff; font: 500 11px/1.6 var(--mono); letter-spacing: .075em; text-transform: uppercase; }
 .marif-facts dd { margin: 8px 0 0; color: #d8e1ef; font-size: 13px; line-height: 1.7; }
-.marif-case h4 { color: #fff; font-size: clamp(20px, 2.7vw, 27px); line-height: 1.35; letter-spacing: -.025em; font-weight: 700; margin: 10px 0 20px; }
+.marif-case h2 { color: #fff; font-size: clamp(20px, 2.7vw, 27px); line-height: 1.35; letter-spacing: -.025em; font-weight: 700; margin: 10px 0 20px; }
 .marif-map-story { display: grid; grid-template-columns: 1.45fr .85fr; gap: clamp(24px, 4vw, 48px); align-items: center; padding: 44px 0; }
 .marif-map-story p, .marif-decision-body p, .marif-research > p { font-size: 14px; line-height: 1.85; color: #cdd5e0; margin-top: 14px; }
 .marif-design-note { border-left: 3px solid #65aeff; background: #12243a; padding: 18px 20px; margin-top: 24px; border-radius: 0 12px 12px 0; }
@@ -21,7 +33,7 @@
 .marif-enlarge { display: block; font: 500 11px/1.6 var(--mono); margin-top: 4px; }
 .marif-map-figure figcaption { font-size: 12px; color: #aebdd0; line-height: 1.7; margin: 12px 4px 0; }
 .marif-context { padding: 26px; border: 1px solid #3a506c; background: #121d2e; border-radius: 14px; }
-.marif-context h4 { font-size: 17px; margin: 0 0 22px; }
+.marif-context h2 { font-size: 17px; margin: 0 0 22px; }
 .marif-flow { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; list-style: none; padding: 0; }
 .marif-flow li { border-top: 1px solid #496185; padding-top: 12px; }
 .marif-flow span { display: block; color: #8cbbfa; font: 12px/1.6 var(--mono); margin-bottom: 8px; }
@@ -46,7 +58,7 @@
 .marif-screens figcaption strong { font-size: 14px; line-height: 1.6; display: block; color: #e9f1fc; }
 .marif-screens figcaption p { color: #b7c5d8; font-size: 12px; line-height: 1.8; margin-top: 8px; }
 .marif-research { margin-top: 40px; padding: 28px; border-radius: 14px; background: #142934; border: 1px solid #345463; }
-.marif-research h4 { margin-bottom: 12px; }
+.marif-research h2 { margin-bottom: 12px; }
 .marif-evaluation-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; border-top: 1px solid #365562; margin-top: 24px; padding-top: 20px; }
 .marif-evaluation-grid strong { display: block; font-size: 13px; color: #b5e1d6; }
 .marif-evaluation-grid span { display: block; font-size: 12px; color: #c0d3dc; line-height: 1.8; margin-top: 8px; }
@@ -54,13 +66,15 @@
 .marif-lightbox::backdrop { background: rgba(4, 8, 15, .9); }
 .marif-lightbox-inner { padding: 22px; }
 .marif-lightbox header { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.marif-lightbox header h4 { font-size: 18px; margin: 0; }
-.marif-lightbox button { min-height: 44px; padding: 8px 14px; border: 1px solid #536b8a; border-radius: 8px; background: #1b2b41; color: #ecf5ff; font: inherit; cursor: pointer; }
+.marif-lightbox header h2 { font-size: 18px; margin: 0; }
+.marif-lightbox button { min-height: 44px; padding: 8px 14px; border: 1px solid #536b8a; border-radius: 8px; background: #1b2b41; color: #ecf5ff; font: inherit; cursor: pointer; text-decoration: none; }
 .marif-lightbox img { display: block; max-height: 65dvh; max-width: 100%; width: auto; height: auto; margin: 18px auto; }
 .marif-lightbox p { font-size: 13px; line-height: 1.75; color: #c5d3e5; margin: 10px 0; }
 .marif-lightbox nav { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-top: 18px; font-size: 13px; }
-.marif-case button:focus-visible, .marif-case summary:focus-visible { outline: 2px solid #8cc6ff; outline-offset: 5px; }
+.marif-case a:focus-visible, .marif-case button:focus-visible, .marif-case summary:focus-visible { outline: 2px solid #8cc6ff; outline-offset: 5px; }
 @media (max-width: 768px) {
+  .marif-overview { grid-template-columns: 1fr; gap: 24px; }
+  .marif-overview-figure { width: min(100%, 180px); margin: 0 auto; }
   .marif-map-story { grid-template-columns: 1fr; }
   .marif-map-figure { width: min(100%, 330px); margin: 0 auto; }
   .marif-facts { grid-template-columns: 1fr; gap: 18px; }

@@ -1,16 +1,27 @@
 import { useEffect, useState } from "react";
 import MarifCaseStudy from "./MarifCaseStudy";
+import ProjectCard from "./ProjectCard";
+import useHashNavigation from "./useHashNavigation";
+import cvDownloadUrl from "./assets/Mahmood_Basirat_CV.pdf?url";
 
 const skills = [
+  { name: "Full-stack Development", cat: "dev" },
+  { name: "Front-end Development", cat: "dev" },
+  { name: "Back-end Development", cat: "dev" },
+  { name: "API Integration", cat: "dev" },
+  { name: "Software Quality Review", cat: "dev" },
+  { name: "AI Evaluation", cat: "ai" },
+  { name: "AI Annotation & Ranking", cat: "ai" },
+  { name: "AI Tutor Integration", cat: "ai" },
+  { name: "Multilingual & RTL Interfaces", cat: "design" },
+  { name: "UI/UX Review", cat: "design" },
+  { name: "Company & Team Management", cat: "soft" },
+  { name: "Client Communication", cat: "soft" },
+  { name: "Proposal Preparation", cat: "soft" },
+  { name: "Teaching", cat: "soft" },
   { name: "Data Analysis", cat: "data" },
   { name: "Data Cleaning", cat: "data" },
   { name: "Dashboard Building", cat: "data" },
-  { name: "AI Evaluation", cat: "ai" },
-  { name: "Annotation", cat: "ai" },
-  { name: "Machine Learning Basics", cat: "ai" },
-  { name: "UI/UX Review", cat: "design" },
-  { name: "Communication", cat: "soft" },
-  { name: "Teaching", cat: "soft" },
   { name: "Pashto", cat: "lang" },
   { name: "Dari", cat: "lang" },
   { name: "English", cat: "lang" },
@@ -19,26 +30,39 @@ const skills = [
   { name: "Persian", cat: "lang" },
 ];
 
-const tools = [
-  "Python",
-  "SQL",
-  "Power BI",
-  "Excel",
-  "KOBO / ODK",
-  "Pandas",
-  "NumPy",
-  "Matplotlib",
-  "Figma",
-  "JavaScript",
-  "MySQL",
-  "SQLite",
+const toolGroups = [
+  {
+    title: "Application development",
+    items: ["React", "JavaScript", "TypeScript", "HTML & CSS", "Vite", "Node.js", "Express"],
+  },
+  {
+    title: "AI integration & design",
+    items: ["Gemini API", "Figma"],
+  },
+  {
+    title: "Data, databases & reporting",
+    items: ["SQL", "PostgreSQL", "MySQL", "SQLite", "Python", "Pandas", "NumPy", "Matplotlib", "Power BI", "Excel", "KOBO / ODK"],
+  },
 ];
+const tools = toolGroups.flatMap((group) => group.items);
 
 const experience = [
   {
-    role: "AI Model Trainer / AI Data Annotator",
+    role: "Founder & President",
+    company: "Khwazon · Kabul, Afghanistan",
+    period: "2026 – Present",
+    website: "https://khwazon.com/",
+    points: [
+      "Founded and manage a software studio focused on websites, applications, and business systems.",
+      "Handle full-stack development across front-end interfaces and back-end functionality, and review software quality.",
+      "Assign team tasks and coordinate company work.",
+      "Communicate with clients and prepare project proposals.",
+    ],
+  },
+  {
+    role: "AI Model Evaluator / AI Data Annotator",
     company: "Freelance · Remote",
-    period: "2024 – Present",
+    period: "Dec 2025 – Present",
     points: [
       "Evaluated AI model outputs and provided feedback to improve response quality.",
       "Performed annotation, classification, and ranking tasks across text, image, and video datasets.",
@@ -46,23 +70,15 @@ const experience = [
     ],
   },
   {
-    role: "Data Analyst",
-    company: "NGO · ",
-    period: "May 2024 – 2025",
-    points: [
-      "Designed and managed surveys using KOBO.",
-      "Cleaned, validated, and maintained datasets to improve data quality and accuracy.",
-      "Analyzed data using Python and developed Power BI dashboards to track KPIs.",
-    ],
-  },
-  {
-    role: "Senior Computer Instructor",
+    role: "High School English Teacher",
     company: "SPS Sofia Private School · Kabul, Afghanistan",
-    period: "Feb 2021 – 2023",
+    period: "2019 – August 2021",
     points: [
-      "Taught students from grade 4 to 12 with a focus on communication and computer skills.",
-      "Designed lesson plans, assessments, exam papers, clubs, and student activities.",
-      "Collaborated with school staff to improve curriculum and student engagement.",
+      "Taught English to high school students, focusing on paragraph, essay, and story writing.",
+      "Designed lesson plans, assessments, and examination papers.",
+      "Founded a newsletter club and trained students to prepare a weekly newspaper. Members interviewed students and teachers, and the school printed each issue.",
+      "Collaborated with school leadership to improve the curriculum.",
+      "Met with parents to discuss each student's progress.",
     ],
   },
 ];
@@ -89,8 +105,10 @@ const projects = [
   {
     number: "01",
     category: "Data Science",
-    title: "Poetry Analysis & Recommendation System",
-    goal: "Build an end-to-end NLP app to analyze poems, classify sentiment, and recommend similar content.",
+    title: "English Poetry Analysis & Recommendation System",
+    summary: "Explore a collection of English poems through sentiment analysis and recommendations for similar writing.",
+    contribution: "Built the Streamlit app, prepared the data, and implemented TF-IDF similarity search.",
+    goal: "Build an end-to-end NLP app to analyze English poems, classify sentiment, and recommend similar content.",
     work: [
       "Built a Streamlit app handling 12K+ poems with EDA, sentiment analysis, and similarity search.",
       "Cleaned and processed dataset using Pandas; engineered TF-IDF features for text representation.",
@@ -113,6 +131,8 @@ const projects = [
     number: "02",
     category: "AI Evaluation",
     title: "AI Model Training & Evaluation",
+    summary: "Evaluation and annotation of AI responses across text, image, and video tasks.",
+    contribution: "Applied review rubrics, ranked responses, and flagged factual errors, hallucinations, and bias.",
     goal: "Improve AI response quality via systematic evaluation and ranking.",
     work: [
       "Reviewed 1,000+ AI outputs across text, image, and video tasks.",
@@ -127,6 +147,9 @@ const projects = [
     number: "03",
     category: "Data Analysis",
     title: "NGO Survey Dashboard & Data Analysis",
+    summary: "Dashboards that turn field survey data into reports for health and education programmes.",
+    contribution: "Cleaned KOBO data, analysed trends, and built Power BI dashboards for programme reporting.",
+    context: "The NGO needed structured reporting across regions. I connected data cleaning and validation to analysis and dashboards for tracking beneficiaries, services, and programme performance.",
     goal: "Turn field survey data into actionable insights for NGO reporting.",
     work: [
       "Cleaned and validated KOBO survey data from field operations.",
@@ -144,6 +167,8 @@ const projects = [
     number: "04",
     category: "Product Design",
     title: "Khayat Tailor Management App",
+    summary: "A multilingual app design for managing tailoring customers, orders, and measurements.",
+    contribution: "Designed the workflows in Figma and planned the Pashto, Dari, and English experience.",
     goal: "Design a multilingual system for managing tailoring workflows.",
     work: [
       "Designed customer → order → measurement flows in Figma.",
@@ -160,6 +185,8 @@ const projects = [
     number: "05",
     category: "Frontend",
     title: "Personal Portfolio Website",
+    summary: "A responsive website presenting my projects, professional experience, and supporting work.",
+    contribution: "Built the React interface, navigation, project galleries, and expandable case studies.",
     goal: "Create a clean, recruiter-focused portfolio site.",
     work: [
       "Built responsive React UI for desktop and mobile.",
@@ -169,12 +196,13 @@ const projects = [
     tools: ["React", "CSS", "Responsive Design", "Frontend"],
     result: "Clear online presence to support job applications.",
     proof: "Source code available",
-    link: "https://github.com/mbasirat6/mahmood-basirat-portfolio",
+    link: "https://github.com/mbasirat6/MyPortfolio",
     linkLabel: "View GitHub Repo ↗",
   },
 ];
 
 const catColors = {
+  dev: { bg: "#092c2b", border: "#1c6662", text: "#7de2d7" },
   data: { bg: "#0c2340", border: "#1a4a7a", text: "#7ec8f0" },
   ai: { bg: "#16103a", border: "#2d2580", text: "#a89cf7" },
   design: { bg: "#2a1c00", border: "#5a3c00", text: "#f0b429" },
@@ -209,7 +237,7 @@ function runPortfolioDataChecks() {
 
   if (skills.length < 10) errors.push("Expected at least 10 skills.");
   if (tools.length < 8) errors.push("Expected at least 8 tools.");
-  if (experience.length < 3) errors.push("Expected at least 3 experience items.");
+  if (experience.length === 0) errors.push("Experience entries are missing.");
 
   if (errors.length > 0) {
     console.warn("Portfolio data checks failed:", errors);
@@ -217,6 +245,7 @@ function runPortfolioDataChecks() {
 }
 
 export default function MahmoodPortfolio() {
+  useHashNavigation();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
@@ -294,37 +323,6 @@ export default function MahmoodPortfolio() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-          --bg: #0d1117;
-          --bg2: #161b27;
-          --surface: #1c2333;
-          --surface2: #212840;
-          --border: #2d3a52;
-          --border-hover: #3d5070;
-          --text: #ffffff;
-          --text-secondary: #cdd5e0;
-          --text-soft: #8899b0;
-          --accent: #4d9eff;
-          --accent-hover: #2e86f5;
-          --accent-glow: rgba(77, 158, 255, 0.15);
-          --mono: 'JetBrains Mono', monospace;
-        }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-          background: var(--bg);
-          color: var(--text);
-          font-family: 'Inter', sans-serif;
-          font-size: 16px;
-          line-height: 1.6;
-          -webkit-font-smoothing: antialiased;
-        }
-
         .animate {
           opacity: 0;
           transform: translateY(28px);
@@ -810,6 +808,14 @@ export default function MahmoodPortfolio() {
           gap: 10px;
         }
 
+        .tool-group + .tool-group { margin-top: 24px; }
+        .tool-group h3 {
+          margin-bottom: 12px;
+          color: var(--text-secondary);
+          font-size: 0.95rem;
+          font-weight: 600;
+        }
+
         .tool-card {
           background: var(--surface);
           border: 1px solid var(--border);
@@ -859,6 +865,14 @@ export default function MahmoodPortfolio() {
           white-space: nowrap;
         }
 
+        .company-website {
+          display: inline-block;
+          margin-top: 14px;
+          color: var(--accent);
+          font-size: 0.875rem;
+          text-underline-offset: 4px;
+        }
+
         .exp-points {
           display: flex;
           flex-direction: column;
@@ -893,6 +907,8 @@ export default function MahmoodPortfolio() {
           grid-template-columns: 1fr 1fr;
           gap: 18px;
         }
+
+        #projects { scroll-margin-top: 80px; }
 
         .project-card-clean {
           background: var(--surface);
@@ -1362,23 +1378,19 @@ export default function MahmoodPortfolio() {
             <div>
               <div className="hero-badge">
                 <span className="hero-badge-dot" />
-                Available for remote work
+                Founder &amp; President at Khwazon
               </div>
               <h1 className="hero-name">Mahmood Basirat</h1>
               <p className="hero-title">
-                <strong>Data Analyst</strong> &nbsp;·&nbsp; <strong>AI Model Evaluator</strong>
+                <strong>Full-stack Developer</strong> &nbsp;·&nbsp; <strong>AI Model Evaluator</strong>
               </p>
               <p className="hero-desc">
-                I help teams improve AI models and turn raw data into clear insights using Python, SQL, and Power BI.
+                I build software for education and everyday business needs. I lead Khwazon and am developing Marif, an AI-supported learning platform for Afghan students studying in Pashto and Dari.
               </p>
-
-              <div style={{ marginTop: "12px", fontSize: "0.9rem", color: "var(--accent)", fontWeight: "600" }}>
-                🎯 Target Role: Data Analyst · AI Model Evaluator (Entry-Level) · Open to Relocation / Remote
-              </div>
 
               <div style={{ marginTop: "24px" }}>
                 <a href="#contact" onClick={(e) => { e.preventDefault(); scrollTo("contact"); }} className="btn-primary">
-                  Hire Me
+                  Get in touch
                 </a>
                 <a href="#marif" onClick={(e) => { e.preventDefault(); scrollTo("marif"); }} className="hero-marif-link">
                   Explore Marif →
@@ -1395,19 +1407,19 @@ export default function MahmoodPortfolio() {
               </div>
               <div className="profile-stats">
                 <button type="button" className="stat" onClick={() => scrollTo("experience")} aria-label="Go to experience section">
-                  <span className="stat-num">3+</span>
-                  <span className="stat-label">Years</span>
+                  <span className="stat-num">{experience.length}</span>
+                  <span className="stat-label">Roles</span>
                 </button>
                 <button type="button" className="stat" onClick={() => scrollTo("projects")} aria-label="Go to projects section">
                   <span className="stat-num">{projects.length}</span>
                   <span className="stat-label">Projects</span>
                 </button>
                 <button type="button" className="stat" onClick={() => scrollTo("tools")} aria-label="Go to tools section">
-                  <span className="stat-num">12+</span>
+                  <span className="stat-num">{tools.length}</span>
                   <span className="stat-label">Tools</span>
                 </button>
                 <button type="button" className="stat" onClick={() => scrollTo("skills")} aria-label="Go to languages and skills section">
-                  <span className="stat-num">6</span>
+                  <span className="stat-num">{skills.filter((skill) => skill.cat === "lang").length}</span>
                   <span className="stat-label">Languages</span>
                 </button>
               </div>
@@ -1422,11 +1434,11 @@ export default function MahmoodPortfolio() {
           <div className="about-grid">
             <div className="about-card animate animate-delay-1">
               <div className="about-card-label">// who i am</div>
-              <p>I work in AI training, data analysis, and product-focused problem solving. I have experience improving AI systems, analyzing datasets, and building useful applications.</p>
+              <p>I'm a full-stack developer and the founder of Khwazon, based in Kabul. My background brings together classroom teaching, AI model evaluation, and building applications for education and business.</p>
             </div>
             <div className="about-card animate animate-delay-2">
-              <div className="about-card-label">// what i offer</div>
-              <p>Available for remote projects, freelance work, and entry-level data roles — bringing strong analytical thinking and hands-on technical skills to every project.</p>
+              <div className="about-card-label">// what i do</div>
+              <p>I develop front-end interfaces and back-end systems, review software quality, and coordinate team tasks. At Khwazon, I also communicate with clients, prepare project proposals, and manage company operations.</p>
             </div>
           </div>
         </section>
@@ -1437,10 +1449,11 @@ export default function MahmoodPortfolio() {
           <SectionHeader number="04" title="Skills" />
           <div className="legend animate animate-delay-1">
             {[
-              ["data", "#7ec8f0", "Data"],
+              ["dev", "#7de2d7", "Development"],
               ["ai", "#a89cf7", "AI"],
               ["design", "#f0b429", "Design"],
-              ["soft", "#4ade80", "Soft Skills"],
+              ["soft", "#4ade80", "Leadership & Teaching"],
+              ["data", "#7ec8f0", "Data"],
               ["lang", "#f472b6", "Languages"],
             ].map(([cat, color, label]) => (
               <div key={cat} className="legend-item">
@@ -1465,8 +1478,15 @@ export default function MahmoodPortfolio() {
 
         <section id="tools" className="wrap">
           <SectionHeader number="05" title="Tools & Technologies" />
-          <div className="tools-grid animate animate-delay-1">
-            {tools.map((tool) => <div key={tool} className="tool-card">{tool}</div>)}
+          <div className="animate animate-delay-1">
+            {toolGroups.map((group) => (
+              <div key={group.title} className="tool-group">
+                <h3>{group.title}</h3>
+                <div className="tools-grid">
+                  {group.items.map((tool) => <div key={tool} className="tool-card">{tool}</div>)}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -1483,6 +1503,7 @@ export default function MahmoodPortfolio() {
                   <div className="exp-points">
                     {item.points.map((point) => <div key={point} className="exp-point">{point}</div>)}
                   </div>
+                  {item.website && <a href={item.website} target="_blank" rel="noopener noreferrer" className="company-website">Visit Khwazon ↗</a>}
                 </div>
                 <div className="exp-period">{item.period}</div>
               </div>
@@ -1500,132 +1521,7 @@ export default function MahmoodPortfolio() {
 
           <div className="projects-grid">
             {projects.map((project, index) => project.id === "marif" ? <MarifCaseStudy key="marif" /> : (
-              <article id={project.id} key={project.title} className={`project-card-clean ${project.featured ? "project-card-featured" : ""} animate animate-delay-${(index % 2) + 1}`}>
-                <div className="project-top-row">
-                  <div className="project-category">{project.category}</div>
-                  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-                    {project.featured && (
-                      <span style={{
-                        fontSize: "0.65rem",
-                        background: "#f59e0b",
-                        color: "#111",
-                        padding: "3px 8px",
-                        borderRadius: "6px",
-                        fontWeight: "800"
-                      }}>
-                        ⭐ FEATURED
-                      </span>
-                    )}
-                    <div className="project-number">PROJECT {String(index + 1).padStart(2, "0")}</div>
-                  </div>
-                </div>
-
-                <h3 className="project-title-clean">{project.title}</h3>
-
-                <div className="project-block">
-                  <div className="project-block-label">Goal</div>
-                  <p className="project-goal">{project.goal}</p>
-                </div>
-
-                <div className="project-block">
-                  <div className="project-block-label">What I did</div>
-                  <ul className="project-work-list">
-                    {project.work.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
-                </div>
-
-                <div className="project-block">
-                  <div className="project-block-label">{project.resultLabel || "Result"}</div>
-                  <div className="project-result-clean">{project.result}</div>
-                  {project.proof ? <div className="project-proof-note">● {project.proof}</div> : null}
-                </div>
-
-                <div className="project-tools">
-                  {project.tools.map((tool) => <span key={tool} className="project-tool">{tool}</span>)}
-                </div>
-
-                {project.reflection && (
-                  <details className="project-reflection">
-                    <summary>What I want to investigate next</summary>
-                    <p>{project.reflection}</p>
-                  </details>
-                )}
-
-                {project.number === "03" && (
-                  <div style={{ marginTop: "18px" }}>
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        const box = e.currentTarget.nextSibling;
-                        const content = box.firstElementChild;
-
-                        if (box.style.maxHeight && box.style.maxHeight !== "0px") {
-                          box.style.maxHeight = "0px";
-                          e.currentTarget.textContent = "▶ View Case Study";
-                        } else {
-                          box.style.maxHeight = content.scrollHeight + "px";
-                          e.currentTarget.textContent = "▼ Hide Case Study";
-                        }
-                      }}
-                      style={{
-                        width: "100%",
-                        textAlign: "left",
-                        padding: "12px 14px",
-                        borderRadius: "10px",
-                        border: "1px solid var(--border)",
-                        background: "var(--bg2)",
-                        color: "#fff",
-                        fontWeight: "700",
-                        cursor: "pointer"
-                      }}
-                    >
-                      ▶ View Case Study
-                    </button>
-
-                    <div className="case-study-box" style={{
-                      maxHeight: "0px",
-                      overflow: "hidden",
-                      transition: "max-height 0.35s ease"
-                    }}>
-                      <div style={{
-                        marginTop: "10px",
-                        padding: "16px",
-                        border: "1px solid var(--border)",
-                        borderRadius: "10px",
-                        background: "var(--bg2)",
-                        fontSize: "0.85rem",
-                        color: "var(--text-secondary)",
-                        lineHeight: "1.7"
-                      }}>
-                        <strong>Problem:</strong> NGO needed structured reporting for health and education survey data.<br />
-                        <strong>Data:</strong> Field survey data collected using KOBO across multiple regions.<br />
-                        <strong>Process:</strong> Cleaned data → validated entries → analyzed trends → built dashboard.<br />
-                        <strong>Impact:</strong> Enabled tracking of beneficiaries, services, and program performance for reporting.
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {project.screenshots ? (
-                  <button
-                    type="button"
-                    className="gallery-btn"
-                    onClick={() => setGalleryProject(project)}
-                  >
-                    View Screenshots ↗
-                  </button>
-                ) : null}
-
-                {project.link ? (
-                  <button
-                    type="button"
-                    className="project-proof-link"
-                    onClick={() => window.open(project.link, "_blank", "noopener,noreferrer")}
-                  >
-                    {project.linkLabel}
-                  </button>
-                ) : null}
-              </article>
+              <ProjectCard key={project.title} project={project} number={index + 1} onViewScreenshots={setGalleryProject} />
             ))}
           </div>
         </section>
@@ -1641,7 +1537,7 @@ export default function MahmoodPortfolio() {
               <div>
                 <div className="edu-degree">Bachelor of Information Technology (Data Science)</div>
                 <div className="edu-school">American University of Afghanistan</div>
-                <div className="edu-year">May 2024</div>
+                <div className="edu-year">2018 – 2024</div>
               </div>
             </div>
 
@@ -1671,7 +1567,7 @@ export default function MahmoodPortfolio() {
               <div>
                 <div className="edu-degree">Higher Secondary School (Class 12 / FSC)</div>
                 <div className="edu-school">Rahman Baba High School · Kabul</div>
-                <div className="edu-year">Graduated 2017</div>
+                <div className="edu-year">December 2017</div>
               </div>
             </div>
           </div>
@@ -1680,22 +1576,22 @@ export default function MahmoodPortfolio() {
         <div className="divider" />
 
         <section className="wrap">
-          <SectionHeader number="09" title="What I Deliver" />
+          <SectionHeader number="09" title="How I Contribute" />
           <div className="hire-grid">
             <div className="hire-card animate animate-delay-1">
-              <div className="hire-icon">📊</div>
-              <div className="hire-title">Data Analysis & Reporting</div>
-              <p className="hire-desc">Clean, validate, and analyze datasets, then build clear dashboards (Power BI/Excel) to track KPIs, beneficiaries, and trends for decision-making.</p>
+              <div className="hire-icon">💻</div>
+              <div className="hire-title">Full-stack Development</div>
+              <p className="hire-desc">Build interfaces, back-end functionality, and connected application workflows for learning platforms and business software, with attention to multilingual use.</p>
             </div>
             <div className="hire-card animate animate-delay-2">
               <div className="hire-icon">🤖</div>
               <div className="hire-title">AI Evaluation & Quality Review</div>
-              <p className="hire-desc">Evaluate LLM outputs across text/image/video, detect hallucinations and bias, rank responses with rubrics, and deliver structured feedback to improve model quality.</p>
+              <p className="hire-desc">Evaluate AI responses across text, image, and video tasks. Apply review criteria, compare outputs, and flag factual errors, hallucinations, and bias.</p>
             </div>
             <div className="hire-card animate animate-delay-3">
               <div className="hire-icon">🧩</div>
-              <div className="hire-title">Product & UX Feedback</div>
-              <p className="hire-desc">Review user flows, reduce friction, and provide actionable UX feedback with multilingual context (Pashto, Dari, English) to improve usability.</p>
+              <div className="hire-title">Company & Team Management</div>
+              <p className="hire-desc">Manage Khwazon's operations, assign team tasks, communicate with clients, prepare proposals, and review the quality of the software we build.</p>
             </div>
           </div>
         </section>
@@ -1724,9 +1620,9 @@ export default function MahmoodPortfolio() {
           <div className="contact-box animate animate-delay-1">
             <div>
               <h3 className="contact-h">Let's work<br />together.</h3>
-              <p className="contact-p">I'm available for remote projects, freelance work, and entry-level data roles. Feel free to reach out anytime.</p>
+              <p className="contact-p">Interested in working together on software, AI evaluation, or learning tools? Get in touch to discuss a project or collaboration.</p>
               <div className="contact-btns">
-                <a href="/Mahmood_Basirat_CV.pdf" download className="btn-primary">Download CV</a>
+                <a href={cvDownloadUrl} download="Mahmood_Basirat_CV.pdf" className="btn-primary">Download CV</a>
                 <a href="mailto:mbasirat6@gmail.com" className="btn-secondary">Email Me</a>
               </div>
             </div>
@@ -1757,7 +1653,7 @@ export default function MahmoodPortfolio() {
         <footer className="footer">
           <span className="footer-brand">mahmood.basirat</span>
           <span className="footer-copy">© 2026 Mahmood Basirat. All rights reserved.</span>
-          <span className="footer-copy">Data Analyst · AI Model Evaluator</span>
+          <span className="footer-copy">Khwazon Founder · Full-stack Developer</span>
         </footer>
       </div>
     </>

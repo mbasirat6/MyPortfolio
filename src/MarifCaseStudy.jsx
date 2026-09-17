@@ -71,8 +71,9 @@ const decisions = [
   },
 ];
 
-export default function MarifCaseStudy() {
+export default function MarifCaseStudy({ standalone = false }) {
   const dialogRef = useRef(null);
+  const Title = standalone ? "h1" : "h3";
   const [activeScreen, setActiveScreen] = useState(0);
   const screen = screens[activeScreen];
 
@@ -87,11 +88,31 @@ export default function MarifCaseStudy() {
 
   return (
     <article id="marif" className="project-card-clean project-card-featured marif-case" aria-labelledby="marif-title">
-      <div className="marif-eyebrow"><span>Featured project / AI & education</span><span className="marif-status">In active development</span></div>
-      <h3 id="marif-title" className="marif-title">Marif</h3>
-      <p className="marif-subtitle">A curriculum becomes a learning journey.</p>
-      <p className="marif-intro">I am building an AI-supported learning platform around Afghanistan’s school textbooks. Marif brings together reading, guided exploration, and practice in Pashto and Dari—with design decisions shaped by language access, reliability, and the cost of AI.</p>
+      <div className="marif-eyebrow"><span>{standalone ? "Case study / AI & education" : "Featured project / AI & education"}</span><span className="marif-status">In active development</span></div>
+      <div className={standalone ? "marif-page-intro" : "marif-overview"}>
+        <div>
+          <Title id="marif-title" className="marif-title">Marif</Title>
+          <p className="marif-subtitle">Textbook learning in Pashto and Dari.</p>
+          <p className="marif-summary">An AI-supported study platform for Afghan secondary-school students, connecting textbooks, guided explanations, and practice.</p>
+          {!standalone && <>
+          <p className="marif-role"><strong>My role</strong> Product design, development, curriculum structuring, and AI integration.</p>
+          <ul className="marif-highlights" aria-label="Three key design decisions">
+            <li><strong>Chapter maps</strong><span>Visual topic paths linked to textbook pages.</span></li>
+            <li><strong>Focused AI context</strong><span>Selected page text keeps explanations relevant and limits unnecessary context.</span></li>
+            <li><strong>Language access</strong><span>Pashto and Dari study content with right-to-left interfaces.</span></li>
+          </ul>
+          <a href="/projects/marif/" className="marif-case-toggle">Read case study →</a>
+          </>}
+        </div>
+        {!standalone && <figure className="marif-overview-figure">
+          <button type="button" onClick={() => openScreen(0)} className="marif-image-button" aria-label="Enlarge Marif preview">
+            <img src={screens[0].src} alt={screens[0].alt} width="426" height="922" />
+            <span className="marif-enlarge">Explore the chapter map ↗</span>
+          </button>
+        </figure>}
+      </div>
 
+      {standalone && <div id="marif-case-details">
       <dl className="marif-facts">
         <div><dt>My contribution</dt><dd>Product design, development, curriculum structuring, and tutor integration</dd></div>
         <div><dt>Designed for</dt><dd>Afghan secondary-school students · Current grade selection: 10–12</dd></div>
@@ -101,7 +122,7 @@ export default function MarifCaseStudy() {
       <section className="marif-map-story" aria-labelledby="marif-map-title">
         <div>
           <span className="marif-kicker">The central design decision</span>
-          <h4 id="marif-map-title">Chapter maps connect the learning path to the AI context.</h4>
+          <h2 id="marif-map-title">Chapter maps connect the learning path to the AI context.</h2>
           <p>I added chapter maps to turn a long chapter into connected, selectable topics. The map gives students a visual overview, a place to resume, and a route back to the textbook.</p>
           <p>The same structure helps focus the tutor. When a student selects <strong>“Study this topic”</strong>, the app uses the selected topic’s page references to assemble the relevant textbook text for Gemini.</p>
           <div className="marif-design-note">
@@ -120,7 +141,7 @@ export default function MarifCaseStudy() {
       </section>
 
       <section className="marif-context" aria-labelledby="marif-context-title">
-        <h4 id="marif-context-title">From a selected topic to a focused explanation</h4>
+        <h2 id="marif-context-title">From a selected topic to a focused explanation</h2>
         <ol className="marif-flow">
           <li><span>01</span><strong>Select a map topic</strong><p>The student chooses what to study.</p></li>
           <li><span>02</span><strong>Match source pages</strong><p>The app gathers text for that section.</p></li>
@@ -132,7 +153,7 @@ export default function MarifCaseStudy() {
 
       <section className="marif-decisions" aria-labelledby="marif-decisions-title">
         <span className="marif-kicker">Beyond the feature list</span>
-        <h4 id="marif-decisions-title">Other decisions behind Marif</h4>
+        <h2 id="marif-decisions-title">Other decisions behind Marif</h2>
         <div className="marif-decision-list">
           {decisions.map((item, index) => (
             <details key={item.title} className="marif-decision" open={index === 0}>
@@ -145,7 +166,7 @@ export default function MarifCaseStudy() {
 
       <section className="marif-evidence" aria-labelledby="marif-evidence-title">
         <span className="marif-kicker">Inside the application</span>
-        <h4 id="marif-evidence-title">The decisions in practice</h4>
+        <h2 id="marif-evidence-title">The decisions in practice</h2>
         <p className="marif-capture-note">Six views from the current application, captured in light mode on September 17, 2026. Start with the chapter map above, then follow the explanation, practice, discovery, and language decisions below. Select any image to enlarge it.</p>
         <div className="marif-screens">
           {screens.slice(1).map((item, index) => (
@@ -162,15 +183,18 @@ export default function MarifCaseStudy() {
 
       <section className="marif-research" aria-labelledby="marif-research-title">
         <span className="marif-kicker">From building to investigating</span>
-        <h4 id="marif-research-title">What I want to understand next</h4>
+        <h2 id="marif-research-title">What I want to understand next</h2>
         <p>Marif has given me a working basis for questions I want to study more rigorously: whether explanations stay accurate across languages, whether chapter maps help learners navigate and recall material, and whether the experience is affordable under realistic connectivity constraints.</p>
         <p>I want to involve teachers and learners in evaluating those choices. This is the connection to my interest in AISS: bringing technical development together with participatory design, research methods, and the study of sustainable digital societies.</p>
         <div className="marif-evaluation-grid"><div><strong>Reliability</strong><span>Expert review of textbook support and language quality.</span></div><div><strong>Learning experience</strong><span>Observe navigation and test recall with an appropriate study design.</span></div><div><strong>Affordability</strong><span>Measure tokens, latency, and cost per study session.</span></div></div>
       </section>
 
+      <a href="/#projects" className="marif-case-toggle marif-close-case">← Back to projects</a>
+      </div>}
+
       <dialog ref={dialogRef} className="marif-lightbox" aria-labelledby="marif-screen-title" onClick={(event) => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={(event) => { if (event.key === "ArrowRight") { event.preventDefault(); changeScreen(1); } if (event.key === "ArrowLeft") { event.preventDefault(); changeScreen(-1); } }}>
         <div className="marif-lightbox-inner">
-          <header><h4 id="marif-screen-title">{screen.title}</h4><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="Close screenshot">✕</button></header>
+          <header><h2 id="marif-screen-title">{screen.title}</h2><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="Close screenshot">✕</button></header>
           <img src={screen.src} alt={screen.alt} width="426" height="922" />
           <p>{screen.caption}</p>
           <p className="marif-capture-note">Current application · Light mode · September 17, 2026</p>

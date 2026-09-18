@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import MarifCaseStudy from "./MarifCaseStudy";
-import ProjectCard from "./ProjectCard";
+import ProjectGallery from "./ProjectGallery";
 import useHashNavigation from "./useHashNavigation";
 import cvDownloadUrl from "./assets/Mahmood_Basirat_CV.pdf?url";
 
@@ -86,9 +85,14 @@ const experience = [
 const projects = [
   {
     id: "marif",
+    group: "Learning & AI",
+    preview: "marif",
+    caseStudy: "/projects/marif/",
     featured: true,
     category: "AI & Education",
-    title: "Marif — Learning in Pashto and Dari",
+    title: "Marif",
+    summary: "A study app with school textbooks, practice, and AI explanations in Pashto and Dari.",
+    contribution: "Designed and developed the app, connected textbook content, and integrated the AI tutor.",
     goal: "Make the Afghan secondary-school curriculum easier to study through textbook access, practice, and contextual AI support.",
     work: [
       "Developed a mobile-first React application around official school textbooks for Grades 10–12.",
@@ -103,10 +107,37 @@ const projects = [
     reflection: "Building Marif has made reliability, language access, and affordability central to my work. My next research step is to evaluate the quality of its explanations and learn how students and teachers would shape its design. Learning outcomes have not yet been established.",
   },
   {
+    id: "education-atlas",
+    group: "Data & analysis",
+    preview: "atlas",
+    category: "Data & Education",
+    title: "Afghanistan Education Atlas",
+    summary: "An interactive map to explore schools, school attendance, and access to internet and devices across Afghanistan.",
+    contribution: "Defined the research question and developed the dashboard and data preparation workflow with AI assistance.",
+    goal: "Help people understand the conditions for learning in Afghanistan, including who may be able to use digital learning tools.",
+    work: [
+      "Brought together survey indicators for 34 provinces and 9,952 school-location records from 26 provinces.",
+      "Used Python to clean text, standardise province names, check coordinates, and flag missing or conflicting values while preserving the source data.",
+      "Built an interactive map, province comparisons, school search, and downloadable data with documented sources and methods.",
+    ],
+    tools: ["Python", "JavaScript", "Leaflet"],
+    resultLabel: "What it shows",
+    result: "A working research dashboard that makes scattered education data easier to explore. The figures come from different years and are not a live school register. Shared locations are flagged for review rather than automatically deleted.",
+    image: "/screenshots/atlas/map.png",
+    screenshots: ["/screenshots/atlas/overview.png", "/screenshots/atlas/map.png"],
+    link: "https://github.com/mbasirat6/afghanistan-education-atlas",
+    linkLabel: "Code & methods (private repo) ↗",
+    demoLink: "https://afghanistan-education-atlas.mbasirat6.chatgpt.site/",
+    demoLabel: "Open dashboard (owner access) ↗",
+  },
+  {
     number: "01",
+    id: "poetry",
+    group: "Data & analysis",
+    preview: "poetry",
     category: "Data Science",
-    title: "English Poetry Analysis & Recommendation System",
-    summary: "Explore a collection of English poems through sentiment analysis and recommendations for similar writing.",
+    title: "English Poetry Explorer",
+    summary: "Explore English poems, analyse their tone, and find similar writing.",
     contribution: "Built the Streamlit app, prepared the data, and implemented TF-IDF similarity search.",
     goal: "Build an end-to-end NLP app to analyze English poems, classify sentiment, and recommend similar content.",
     work: [
@@ -129,9 +160,12 @@ const projects = [
   },
   {
     number: "02",
+    id: "ai-review",
+    group: "Learning & AI",
+    preview: "review",
     category: "AI Evaluation",
-    title: "AI Model Training & Evaluation",
-    summary: "Evaluation and annotation of AI responses across text, image, and video tasks.",
+    title: "AI Response Review",
+    summary: "Review AI answers across text, images, and video for accuracy and quality.",
     contribution: "Applied review rubrics, ranked responses, and flagged factual errors, hallucinations, and bias.",
     goal: "Improve AI response quality via systematic evaluation and ranking.",
     work: [
@@ -145,9 +179,12 @@ const projects = [
   },
   {
     number: "03",
+    id: "survey-dashboard",
+    group: "Data & analysis",
+    preview: "dashboard",
     category: "Data Analysis",
-    title: "NGO Survey Dashboard & Data Analysis",
-    summary: "Dashboards that turn field survey data into reports for health and education programmes.",
+    title: "Survey Dashboard",
+    summary: "Turn survey data into clear reports for health and education programmes.",
     contribution: "Cleaned KOBO data, analysed trends, and built Power BI dashboards for programme reporting.",
     context: "The NGO needed structured reporting across regions. I connected data cleaning and validation to analysis and dashboards for tracking beneficiaries, services, and programme performance.",
     goal: "Turn field survey data into actionable insights for NGO reporting.",
@@ -165,9 +202,12 @@ const projects = [
   },
   {
     number: "04",
+    id: "khayat",
+    group: "Apps & design",
+    preview: "workflow",
     category: "Product Design",
-    title: "Khayat Tailor Management App",
-    summary: "A multilingual app design for managing tailoring customers, orders, and measurements.",
+    title: "Khayat",
+    summary: "An app design to help tailors organise customers, orders, and measurements.",
     contribution: "Designed the workflows in Figma and planned the Pashto, Dari, and English experience.",
     goal: "Design a multilingual system for managing tailoring workflows.",
     work: [
@@ -183,9 +223,12 @@ const projects = [
   },
   {
     number: "05",
+    id: "portfolio",
+    group: "Apps & design",
+    preview: "portfolio",
     category: "Frontend",
-    title: "Personal Portfolio Website",
-    summary: "A responsive website presenting my projects, professional experience, and supporting work.",
+    title: "Personal Portfolio",
+    summary: "The website you’re browsing: a home for my work, experience, and CV.",
     contribution: "Built the React interface, navigation, project galleries, and expandable case studies.",
     goal: "Create a clean, recruiter-focused portfolio site.",
     work: [
@@ -1516,14 +1559,10 @@ export default function MahmoodPortfolio() {
         <section id="projects" className="wrap">
           <SectionHeader number="07" title="Selected Projects" />
           <div className="projects-intro animate animate-delay-1">
-            Practical projects that show how I solve problems: what the goal was, what I did, which tools I used, and the result.
+            Learning tools, data projects, and useful apps. Choose a category to explore.
           </div>
 
-          <div className="projects-grid">
-            {projects.map((project, index) => project.id === "marif" ? <MarifCaseStudy key="marif" /> : (
-              <ProjectCard key={project.title} project={project} number={index + 1} onViewScreenshots={setGalleryProject} />
-            ))}
-          </div>
+          <ProjectGallery projects={projects} onViewScreenshots={setGalleryProject} />
         </section>
 
         <div className="divider" />

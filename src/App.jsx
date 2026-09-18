@@ -127,8 +127,8 @@ const projects = [
     screenshots: ["/screenshots/atlas/overview.png", "/screenshots/atlas/map.png"],
     link: "https://github.com/mbasirat6/afghanistan-education-atlas",
     linkLabel: "Code & methods (private repo) ↗",
-    demoLink: "https://afghanistan-education-atlas.mbasirat6.chatgpt.site/",
-    demoLabel: "Open dashboard (owner access) ↗",
+    demoLink: "https://afghanistan-education-atlas.vercel.app/",
+    demoLabel: "Open dashboard ↗",
   },
   {
     number: "01",

@@ -181,11 +181,21 @@ export default function MarifCaseStudy({ standalone = false }) {
         </div>
       </section>
 
+      <section className="marif-research marif-atlas-reflection" aria-labelledby="marif-learning-title">
+        <span className="marif-kicker">Learning from Education Atlas</span>
+        <h2 id="marif-learning-title">What I learned</h2>
+        <p>I built Marif to help students study their textbooks in Pashto and Dari. Then I built Education Atlas to ask: who could actually use it?</p>
+        <p>The 2022–23 MICS survey found that 5.1% of households owned a computer, while 85.2% owned a mobile phone. This supports my decision to design Marif around a mobile screen. But a household phone is not necessarily a smartphone a student can use, and only 27.7% of households reported internet at home.</p>
+        <p>That gives me two next steps: explore saving learning material for use between connections, and test Marif with people using different phones and internet connections. The data helps me improve the design; learning benefits still need to be tested.</p>
+        <p><a href="https://afghanistan-education-atlas.vercel.app/#learning-insights" target="_blank" rel="noopener noreferrer">Read the questions and findings in Education Atlas ↗</a></p>
+        <p><a href="https://www.unicef.org/afghanistan/media/9191/file/Afghanistan%20MICS%20Summary%20Findings%20Report%202022-2023.pdf#page=15" target="_blank" rel="noopener noreferrer">Source: UNICEF MICS 2022–23, summary report, p. 7 ↗</a></p>
+      </section>
+
       <section className="marif-research" aria-labelledby="marif-research-title">
         <span className="marif-kicker">From building to investigating</span>
         <h2 id="marif-research-title">What I want to understand next</h2>
         <p>Marif has given me a working basis for questions I want to study more rigorously: whether explanations stay accurate across languages, whether chapter maps help learners navigate and recall material, and whether the experience is affordable under realistic connectivity constraints.</p>
-        <p>I want to involve teachers and learners in evaluating those choices. This is the connection to my interest in AISS: bringing technical development together with participatory design, research methods, and the study of sustainable digital societies.</p>
+        <p>I want teachers and learners to help test those choices and show me what needs to change.</p>
         <div className="marif-evaluation-grid"><div><strong>Reliability</strong><span>Expert review of textbook support and language quality.</span></div><div><strong>Learning experience</strong><span>Observe navigation and test recall with an appropriate study design.</span></div><div><strong>Affordability</strong><span>Measure tokens, latency, and cost per study session.</span></div></div>
       </section>
 

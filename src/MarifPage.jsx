@@ -17,6 +17,7 @@ export default function MarifPage() {
           <a href="#marif-map-title">Chapter maps</a>
           <a href="#marif-decisions-title">Design decisions</a>
           <a href="#marif-evidence-title">Screenshots</a>
+          <a href="#marif-learning-title">What I learned</a>
           <a href="#marif-research-title">Next steps</a>
         </nav>
         <MarifCaseStudy standalone />

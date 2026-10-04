@@ -11,6 +11,10 @@ Run `npm ci`, then `npm run dev`. Use `npm run build` and `npm run lint` to vali
 
 Vite builds both HTML entry points. Deploy the complete `dist/` directory: the case study is emitted as `dist/projects/marif/index.html`, so direct links and refreshes do not require an SPA catch-all rewrite on a static host that serves directory index files. The current asset URLs assume hosting at the domain root.
 
+## Animated background
+
+Both pages share a portfolio adaptation of Khwazon's procedural hexagon background in `src/HexagonBackground.jsx` and `src/lib/hexagon-field.js`, with smaller tiles, softer edges, blue-violet lighting, and extra dimming on mobile. Three.js loads separately from the page content. The light follows the mouse, drifts when idle, and runs at 30 fps on touch devices. Rendering pauses in hidden tabs, caps resolution, and uses a matching static SVG texture when reduced motion is enabled or WebGL is unavailable. The background does not intercept clicks; its CSS overlay keeps text readable above the moving light.
+
 ## Template information
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

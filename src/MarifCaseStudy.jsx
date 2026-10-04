@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import "./MarifCaseStudy.css";
+import "./GlassCards.css";
 
 const screens = [
   {
@@ -87,7 +88,7 @@ export default function MarifCaseStudy({ standalone = false }) {
   };
 
   return (
-    <article id="marif" className="project-card-clean project-card-featured marif-case" aria-labelledby="marif-title">
+    <article id="marif" className="project-card-clean project-card-featured marif-case glass-card" aria-labelledby="marif-title">
       <div className="marif-eyebrow"><span>{standalone ? "Case study / AI & education" : "Featured project / AI & education"}</span><span className="marif-status">In active development</span></div>
       <div className={standalone ? "marif-page-intro" : "marif-overview"}>
         <div>
@@ -105,7 +106,7 @@ export default function MarifCaseStudy({ standalone = false }) {
           </>}
         </div>
         {!standalone && <figure className="marif-overview-figure">
-          <button type="button" onClick={() => openScreen(0)} className="marif-image-button" aria-label="Enlarge Marif preview">
+          <button type="button" onClick={() => openScreen(0)} className="marif-image-button glass-inset" aria-label="Enlarge Marif preview">
             <img src={screens[0].src} alt={screens[0].alt} width="426" height="922" />
             <span className="marif-enlarge">Explore the chapter map ↗</span>
           </button>
@@ -125,14 +126,14 @@ export default function MarifCaseStudy({ standalone = false }) {
           <h2 id="marif-map-title">Chapter maps connect the learning path to the AI context.</h2>
           <p>I added chapter maps to turn a long chapter into connected, selectable topics. The map gives students a visual overview, a place to resume, and a route back to the textbook.</p>
           <p>The same structure helps focus the tutor. When a student selects <strong>“Study this topic”</strong>, the app uses the selected topic’s page references to assemble the relevant textbook text for Gemini.</p>
-          <div className="marif-design-note">
+          <div className="marif-design-note glass-inset">
             <strong>One decision, two intended benefits</strong>
             <p>For students: a more interactive way to explore, recap, and remember a chapter. For the system: less unnecessary textbook context in a focused request, helping control token use.</p>
           </div>
           <p className="marif-caveat">The focused-context path is implemented. Its token savings and effects on engagement or recall have not yet been quantified.</p>
         </div>
         <figure className="marif-map-figure">
-          <button type="button" onClick={() => openScreen(0)} className="marif-image-button" aria-label="Enlarge chapter map screenshot">
+          <button type="button" onClick={() => openScreen(0)} className="marif-image-button glass-inset" aria-label="Enlarge chapter map screenshot">
             <img src={screens[0].src} alt={screens[0].alt} width="426" height="922" loading="lazy" />
             <span className="marif-enlarge">View screenshot ↗</span>
           </button>
@@ -140,7 +141,7 @@ export default function MarifCaseStudy({ standalone = false }) {
         </figure>
       </section>
 
-      <section className="marif-context" aria-labelledby="marif-context-title">
+      <section className="marif-context glass-card" aria-labelledby="marif-context-title">
         <h2 id="marif-context-title">From a selected topic to a focused explanation</h2>
         <ol className="marif-flow">
           <li><span>01</span><strong>Select a map topic</strong><p>The student chooses what to study.</p></li>
@@ -171,7 +172,7 @@ export default function MarifCaseStudy({ standalone = false }) {
         <div className="marif-screens">
           {screens.slice(1).map((item, index) => (
             <figure key={item.src}>
-              <button type="button" className="marif-image-button" onClick={() => openScreen(index + 1)} aria-label={`Enlarge screenshot: ${item.title}`}>
+              <button type="button" className="marif-image-button glass-inset" onClick={() => openScreen(index + 1)} aria-label={`Enlarge screenshot: ${item.title}`}>
                 <img src={item.src} alt={item.alt} width="426" height="922" loading="lazy" />
                 <span className="marif-enlarge">View screenshot ↗</span>
               </button>
@@ -181,7 +182,7 @@ export default function MarifCaseStudy({ standalone = false }) {
         </div>
       </section>
 
-      <section className="marif-research marif-atlas-reflection" aria-labelledby="marif-learning-title">
+      <section className="marif-research glass-card marif-atlas-reflection" aria-labelledby="marif-learning-title">
         <span className="marif-kicker">Learning from Education Atlas</span>
         <h2 id="marif-learning-title">What I learned</h2>
         <p>I built Marif to help students study their textbooks in Pashto and Dari. Then I built Education Atlas to ask: who could actually use it?</p>
@@ -191,7 +192,7 @@ export default function MarifCaseStudy({ standalone = false }) {
         <p><a href="https://www.unicef.org/afghanistan/media/9191/file/Afghanistan%20MICS%20Summary%20Findings%20Report%202022-2023.pdf#page=15" target="_blank" rel="noopener noreferrer">Source: UNICEF MICS 2022–23, summary report, p. 7 ↗</a></p>
       </section>
 
-      <section className="marif-research" aria-labelledby="marif-research-title">
+      <section className="marif-research glass-card" aria-labelledby="marif-research-title">
         <span className="marif-kicker">From building to investigating</span>
         <h2 id="marif-research-title">What I want to understand next</h2>
         <p>Marif has given me a working basis for questions I want to study more rigorously: whether explanations stay accurate across languages, whether chapter maps help learners navigate and recall material, and whether the experience is affordable under realistic connectivity constraints.</p>
@@ -202,7 +203,7 @@ export default function MarifCaseStudy({ standalone = false }) {
       <a href="/#projects" className="marif-case-toggle marif-close-case">← Back to projects</a>
       </div>}
 
-      <dialog ref={dialogRef} className="marif-lightbox" aria-labelledby="marif-screen-title" onClick={(event) => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={(event) => { if (event.key === "ArrowRight") { event.preventDefault(); changeScreen(1); } if (event.key === "ArrowLeft") { event.preventDefault(); changeScreen(-1); } }}>
+      <dialog ref={dialogRef} className="marif-lightbox glass-card" aria-labelledby="marif-screen-title" onClick={(event) => { if (event.target === event.currentTarget) dialogRef.current.close(); }} onKeyDown={(event) => { if (event.key === "ArrowRight") { event.preventDefault(); changeScreen(1); } if (event.key === "ArrowLeft") { event.preventDefault(); changeScreen(-1); } }}>
         <div className="marif-lightbox-inner">
           <header><h2 id="marif-screen-title">{screen.title}</h2><button type="button" autoFocus onClick={() => dialogRef.current.close()} aria-label="Close screenshot">✕</button></header>
           <img src={screen.src} alt={screen.alt} width="426" height="922" />

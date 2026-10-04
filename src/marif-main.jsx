@@ -3,7 +3,8 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import "./theme.css";
 import MarifPage from "./MarifPage";
+import { HexagonBackground } from "./HexagonBackground.jsx";
 
 createRoot(document.getElementById("root")).render(
-  <StrictMode><MarifPage /></StrictMode>,
+  <StrictMode><HexagonBackground /><MarifPage /></StrictMode>,
 );

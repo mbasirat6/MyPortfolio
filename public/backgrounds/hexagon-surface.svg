@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="249.42" viewBox="0 0 144 249.42">
+  <defs>
+    <linearGradient id="face" x2=".8" y2="1">
+      <stop stop-color="#141a24" stop-opacity=".95"/>
+      <stop offset="1" stop-color="#070a10" stop-opacity=".94"/>
+    </linearGradient>
+    <linearGradient id="edge" x2=".8" y2="1">
+      <stop stop-color="#344050" stop-opacity=".4"/>
+      <stop offset=".5" stop-color="#1b2330" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#0a0d15"/>
+    </linearGradient>
+    <path id="hex" d="M0-79 68.4-39.5V39.5L0 79-68.4 39.5V-39.5Z" fill="url(#face)" stroke="url(#edge)" stroke-width="2"/>
+  </defs>
+  <use href="#hex" x="0" y="0"/>
+  <use href="#hex" x="144" y="0"/>
+  <use href="#hex" x="72" y="124.71"/>
+  <use href="#hex" x="0" y="249.42"/>
+  <use href="#hex" x="144" y="249.42"/>
+</svg>

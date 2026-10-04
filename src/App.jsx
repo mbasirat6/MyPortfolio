@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import ProjectGallery from "./ProjectGallery";
 import useHashNavigation from "./useHashNavigation";
 import cvDownloadUrl from "./assets/Mahmood_Basirat_CV.pdf?url";
+import "./GlassCards.css";
 
 const skills = [
   { name: "Full-stack Development", cat: "dev" },
@@ -1376,7 +1377,7 @@ export default function MahmoodPortfolio() {
         }
       `}</style>
 
-      <div style={{ background: "#0d1117", minHeight: "100vh", color: "#ffffff" }}>
+      <div style={{ minHeight: "100vh", color: "#ffffff" }}>
         <div className={`mobile-menu ${menuOpen ? "open" : ""}`} onClick={closeMenu}>
           <div className="mobile-menu-panel" onClick={(event) => event.stopPropagation()}>
             <button className="mobile-menu-close" type="button" onClick={closeMenu}>
@@ -1441,7 +1442,7 @@ export default function MahmoodPortfolio() {
               </div>
             </div>
 
-            <div className="profile-card animate">
+            <div className="profile-card glass-card animate">
               <div className="profile-card-top-line" />
               <img src="/profile.jpg" alt="Mahmood Basirat" className="profile-photo" />
               <div>
@@ -1475,11 +1476,11 @@ export default function MahmoodPortfolio() {
         <section id="about" className="wrap">
           <SectionHeader number="01" title="About" />
           <div className="about-grid">
-            <div className="about-card animate animate-delay-1">
+            <div className="about-card glass-card animate animate-delay-1">
               <div className="about-card-label">// who i am</div>
               <p>I'm a full-stack developer and the founder of Khwazon, based in Kabul. My background brings together classroom teaching, AI model evaluation, and building applications for education and business.</p>
             </div>
-            <div className="about-card animate animate-delay-2">
+            <div className="about-card glass-card animate animate-delay-2">
               <div className="about-card-label">// what i do</div>
               <p>I develop front-end interfaces and back-end systems, review software quality, and coordinate team tasks. At Khwazon, I also communicate with clients, prepare project proposals, and manage company operations.</p>
             </div>
@@ -1526,7 +1527,7 @@ export default function MahmoodPortfolio() {
               <div key={group.title} className="tool-group">
                 <h3>{group.title}</h3>
                 <div className="tools-grid">
-                  {group.items.map((tool) => <div key={tool} className="tool-card">{tool}</div>)}
+                  {group.items.map((tool) => <div key={tool} className="tool-card glass-card">{tool}</div>)}
                 </div>
               </div>
             ))}
@@ -1539,7 +1540,7 @@ export default function MahmoodPortfolio() {
           <SectionHeader number="06" title="Experience" />
           <div className="exp-stack">
             {experience.map((item, index) => (
-              <div key={item.role} className={`exp-card animate animate-delay-${index + 1}`}>
+              <div key={item.role} className={`exp-card glass-card animate animate-delay-${index + 1}`}>
                 <div>
                   <div className="exp-role">{item.role}</div>
                   <div className="exp-company">{item.company}</div>
@@ -1571,7 +1572,7 @@ export default function MahmoodPortfolio() {
           <SectionHeader number="08" title="Education" />
 
           <div className="exp-stack">
-            <div className="edu-card animate animate-delay-1">
+            <div className="edu-card glass-card animate animate-delay-1">
               <div className="edu-icon">🎓</div>
               <div>
                 <div className="edu-degree">Bachelor of Information Technology (Data Science)</div>
@@ -1580,7 +1581,7 @@ export default function MahmoodPortfolio() {
               </div>
             </div>
 
-            <div className="edu-card animate animate-delay-2">
+            <div className="edu-card glass-card animate animate-delay-2">
               <div className="edu-icon">🤖</div>
               <div>
                 <div className="edu-degree">AI & Data Science Training</div>
@@ -1589,7 +1590,7 @@ export default function MahmoodPortfolio() {
               </div>
             </div>
 
-            <div className="edu-card animate animate-delay-3">
+            <div className="edu-card glass-card animate animate-delay-3">
               <div className="edu-icon">🌍</div>
               <div>
                 <div className="edu-degree">Youth Solidarity & English Language (YSEL)</div>
@@ -1601,7 +1602,7 @@ export default function MahmoodPortfolio() {
               </div>
             </div>
 
-            <div className="edu-card animate animate-delay-4">
+            <div className="edu-card glass-card animate animate-delay-4">
               <div className="edu-icon">🏫</div>
               <div>
                 <div className="edu-degree">Higher Secondary School (Class 12 / FSC)</div>
@@ -1617,17 +1618,17 @@ export default function MahmoodPortfolio() {
         <section className="wrap">
           <SectionHeader number="09" title="How I Contribute" />
           <div className="hire-grid">
-            <div className="hire-card animate animate-delay-1">
+            <div className="hire-card glass-card animate animate-delay-1">
               <div className="hire-icon">💻</div>
               <div className="hire-title">Full-stack Development</div>
               <p className="hire-desc">Build interfaces, back-end functionality, and connected application workflows for learning platforms and business software, with attention to multilingual use.</p>
             </div>
-            <div className="hire-card animate animate-delay-2">
+            <div className="hire-card glass-card animate animate-delay-2">
               <div className="hire-icon">🤖</div>
               <div className="hire-title">AI Evaluation & Quality Review</div>
               <p className="hire-desc">Evaluate AI responses across text, image, and video tasks. Apply review criteria, compare outputs, and flag factual errors, hallucinations, and bias.</p>
             </div>
-            <div className="hire-card animate animate-delay-3">
+            <div className="hire-card glass-card animate animate-delay-3">
               <div className="hire-icon">🧩</div>
               <div className="hire-title">Company & Team Management</div>
               <p className="hire-desc">Manage Khwazon's operations, assign team tasks, communicate with clients, prepare proposals, and review the quality of the software we build.</p>
@@ -1640,12 +1641,12 @@ export default function MahmoodPortfolio() {
         <section className="wrap">
           <SectionHeader number="10" title="Hobbies" />
           <div className="hobbies-grid">
-            <div className="hobby-card animate animate-delay-1">
+            <div className="hobby-card glass-card animate animate-delay-1">
               <div className="hobby-title">✍️ Writing & Poetry</div>
               <p className="hobby-desc">Passionate about writing poetry that explores culture, identity, and human emotions.</p>
               <a href="https://basirat0.gumroad.com/l/hyaaca" target="_blank" rel="noopener noreferrer" className="btn-primary" style={{ display: "inline-block", marginTop: 18, fontSize: "0.82rem", padding: "9px 20px" }}>Read Book ↗</a>
             </div>
-            <div className="hobby-card animate animate-delay-2">
+            <div className="hobby-card glass-card animate animate-delay-2">
               <div className="hobby-title">🤖 Robotics & Arduino</div>
               <p className="hobby-desc">Interested in building robotics projects using Arduino, sensors, and automation systems.</p>
             </div>
@@ -1656,7 +1657,7 @@ export default function MahmoodPortfolio() {
 
         <section id="contact" className="wrap">
           <SectionHeader number="11" title="Contact" />
-          <div className="contact-box animate animate-delay-1">
+          <div className="contact-box glass-card animate animate-delay-1">
             <div>
               <h3 className="contact-h">Let's work<br />together.</h3>
               <p className="contact-p">Interested in working together on software, AI evaluation, or learning tools? Get in touch to discuss a project or collaboration.</p>
@@ -1675,7 +1676,7 @@ export default function MahmoodPortfolio() {
 
         {galleryProject ? (
           <div className="gallery-overlay" onClick={() => setGalleryProject(null)}>
-            <div className="gallery-modal" onClick={(event) => event.stopPropagation()}>
+            <div className="gallery-modal glass-card" onClick={(event) => event.stopPropagation()}>
               <div className="gallery-header">
                 <div className="gallery-title">{galleryProject.title} Screenshots</div>
                 <button className="gallery-close" type="button" onClick={() => setGalleryProject(null)}>✕</button>

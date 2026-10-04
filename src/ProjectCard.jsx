@@ -25,7 +25,7 @@ function ProjectPreview({ project }) {
 
 export default function ProjectCard({ project, onViewScreenshots }) {
   return (
-    <article id={project.id} className="work-card" aria-labelledby={`${project.id}-title`}>
+    <article id={project.id} className="work-card glass-card" aria-labelledby={`${project.id}-title`}>
       <ProjectPreview project={project} />
       <div className="work-card-body">
         <div className="work-card-category">{project.category}{project.featured && <span>Featured</span>}</div>

@@ -1,0 +1,68 @@
+/* Reserve the page scrollbar so opening a reader never shifts the card grid. */
+html { scrollbar-gutter: stable; }
+
+.project-dialog {
+  --detail-link: #a8d0ff;
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(760px, calc(100% - 48px));
+  max-width: none;
+  max-height: min(860px, calc(100dvh - 64px));
+  padding: 0;
+  overflow: hidden;
+  color: var(--text);
+  background: linear-gradient(135deg, rgb(255 255 255 / .07), transparent 55%), rgb(30 30 34 / .96);
+  border: 1px solid rgb(235 235 240 / .3);
+  border-top-color: rgb(255 255 255 / .5);
+  border-radius: 28px;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / .14), 0 32px 100px rgb(0 0 0 / .35);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+.project-dialog[open] { display: flex; flex-direction: column; }
+.project-dialog::backdrop { background: rgb(8 10 16 / .64); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+.project-dialog-header { display: flex; align-items: flex-start; gap: 20px; padding: 28px 32px 24px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+.project-dialog-header > div { min-width: 0; flex: 1; }
+.project-dialog-category { color: var(--detail-link); font: 11px/1.6 var(--mono); margin-bottom: 8px; }
+.project-dialog-header h2 { font-size: clamp(22px, 3vw, 30px); line-height: 1.25; letter-spacing: -.025em; overflow-wrap: anywhere; }
+.project-dialog-header h2:focus { outline: none; }
+.project-dialog-close { display: grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--text); font-family: inherit; cursor: pointer; }
+.project-dialog-close span { font-size: 28px; line-height: 1; }
+.project-dialog-close:hover { background: var(--surface2); border-color: var(--border-hover); }
+.project-dialog-scroll { min-height: 0; padding: 28px 32px 36px; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; color: var(--text-secondary); font-size: 15px; line-height: 1.8; }
+.project-dialog-intro { font-size: 17px; line-height: 1.7; color: var(--text); }
+.project-dialog-tools { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 18px 0 28px; padding: 0; }
+.project-dialog-tools li { font-size: 12px; padding: 4px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface); }
+.project-dialog-section + .project-dialog-section { margin-top: 26px; }
+.project-dialog-section h3 { color: var(--text); font-size: 16px; font-weight: 600; line-height: 1.5; margin-bottom: 8px; }
+.project-dialog-section > ul { padding-left: 22px; list-style: disc; }
+.project-dialog-section li + li { margin-top: 10px; }
+.project-dialog-section li::marker { color: var(--detail-link); }
+.project-dialog-links { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+.project-dialog-links a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; color: var(--detail-link); text-decoration: underline; text-underline-offset: 4px; }
+.project-dialog-screens { display: grid; gap: 18px; }
+.project-dialog-screens a { display: block; min-width: 0; padding: 10px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); color: var(--detail-link); text-decoration: none; }
+.project-dialog-screens img { display: block; width: 100%; max-height: 440px; object-fit: contain; border-radius: 6px; }
+.project-dialog-screens a > span { display: flex; justify-content: space-between; padding: 10px 4px 0; font-size: 12px; }
+.project-dialog :is(a, button, .project-dialog-scroll):focus-visible { outline: 2px solid var(--detail-link); outline-offset: -3px; }
+:root[data-theme="pearl"] .project-dialog {
+  --detail-link: var(--accent);
+  background: var(--pearl-reflection), rgb(248 250 255 / .94);
+  border-color: var(--card-rim);
+  border-top-color: #fff;
+  box-shadow: var(--pearl-shadow), 0 32px 100px rgb(43 52 70 / .22);
+}
+:root[data-theme="pearl"] .project-dialog::backdrop { background: rgb(39 48 64 / .4); }
+@media (max-width: 600px) {
+  .project-dialog { width: calc(100% - 24px); max-height: calc(100dvh - 24px); border-radius: 22px; }
+  .project-dialog-header { padding: 20px; gap: 12px; }
+  .project-dialog-scroll { padding: 22px 20px 28px; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root .project-dialog { background: var(--bg2); }
+}
+@media (prefers-reduced-transparency: reduce), (prefers-contrast: more) {
+  :root .project-dialog { background: var(--bg2); -webkit-backdrop-filter: none; backdrop-filter: none; border-color: var(--border-hover); }
+  .project-dialog::backdrop { -webkit-backdrop-filter: none; backdrop-filter: none; }
+}

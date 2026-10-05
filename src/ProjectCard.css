@@ -2,8 +2,9 @@
 .project-filters button { padding: 10px 18px; min-height: 44px; border: 1px solid var(--border); border-radius: 24px; background: transparent; color: var(--text-secondary); font: inherit; font-size: 14px; cursor: pointer; transition: background .15s, color .15s; }
 .project-filters button:hover { border-color: var(--accent); }
 .project-filters button[aria-pressed="true"] { background: #dcecff; color: #173d69; border-color: #dcecff; }
-.project-gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 30px; }
-.work-card { min-width: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); scroll-margin-top: 100px; }
+.project-gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: stretch; gap: 30px; }
+.work-card { display: flex; flex-direction: column; min-width: 0; overflow: hidden; border: 1px solid var(--border); border-radius: 18px; background: var(--surface); scroll-margin-top: 100px; }
+.work-card > .work-preview { flex-shrink: 0; }
 .work-preview { position: relative; display: flex; align-items: center; justify-content: center; height: 255px; padding: 26px; overflow: hidden; }
 .work-preview > img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; box-shadow: 0 8px 24px #15253820; }
 .work-preview-marif { gap: 22px; background: #e2ebe6; }
@@ -19,26 +20,14 @@
 .work-flow > div > span { display: block; margin-bottom: 12px; font: 18px var(--mono); opacity: .65; }
 .work-monogram { font-size: 82px; font-weight: 700; letter-spacing: -.07em; line-height: 1; text-align: center; }
 .work-monogram span { display: block; margin-top: 18px; font-size: 12px; font-weight: 400; letter-spacing: .12em; }
-.work-card-body { padding: 25px 28px 20px; }
+.work-card-body { display: flex; flex-direction: column; flex: 1; padding: 25px 28px 20px; }
 .work-card-category { display: flex; align-items: center; gap: 12px; margin-bottom: 9px; color: #a8bad2; font-size: 12px; }
 .work-card-category > span { color: #a6ddcd; padding-left: 12px; border-left: 1px solid var(--border); }
 .work-card h3 { font-size: 22px; letter-spacing: -.025em; line-height: 1.3; margin-bottom: 12px; }
-.work-card-summary { color: var(--text-secondary); font-size: 15px; line-height: 1.65; min-height: 50px; }
+.work-card-summary { flex: 1; color: var(--text-secondary); font-size: 15px; line-height: 1.65; min-height: 50px; }
 .work-card-tools { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; padding: 0; margin: 18px 0; }
 .work-card-tools li { font-size: 11px; color: #bdcce0; background: #131b29; border-radius: 6px; padding: 5px 9px; }
-.work-read-more, .work-details summary { display: flex; align-items: center; gap: 8px; min-height: 44px; color: #a8d0ff; font-size: 14px; font-weight: 600; text-decoration: none; cursor: pointer; }
-.work-details summary { list-style: none; }
-.work-details summary::-webkit-details-marker { display: none; }
-.work-details summary::after { content: '+'; font-size: 19px; margin-left: auto; }
-.work-details[open] summary::after { content: '−'; }
-.work-details-open, .work-details[open] .work-details-closed { display: none; }
-.work-details[open] .work-details-open { display: inline; }
-.work-details-body { margin-top: 12px; padding-top: 4px; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 14px; line-height: 1.75; }
-.work-details-body h4 { color: var(--text); font-size: 14px; margin: 18px 0 6px; }
-.work-details-body ul { padding-left: 20px; }
-.work-details-body li + li { margin-top: 6px; }
-.work-evidence { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; }
-.work-evidence a, .work-evidence button { display: inline-flex; align-items: center; min-height: 44px; padding: 0; border: none; background: none; color: #a8d0ff; font: inherit; text-decoration: none; cursor: pointer; }
+.work-read-more { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; min-height: 44px; padding: 0; border: 0; background: transparent; color: #a8d0ff; font: 600 14px/1.5 'Inter', sans-serif; text-align: left; text-decoration: none; cursor: pointer; }
 .work-card a:hover, .work-card button:hover { text-decoration: underline; text-underline-offset: 4px; }
 .project-gallery :is(a, button, summary):focus-visible { outline: 2px solid #8cc6ff; outline-offset: 4px; border-radius: 4px; }
 .project-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }

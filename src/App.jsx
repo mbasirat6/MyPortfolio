@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import ProjectGallery from "./ProjectGallery";
+import ThemeSwitcher from "./ThemeSwitcher";
+import "./FloatingNav.css";
 import useHashNavigation from "./useHashNavigation";
 import cvDownloadUrl from "./assets/Mahmood_Basirat_CV.pdf?url";
 import "./GlassCards.css";
@@ -88,6 +90,11 @@ const projects = [
     id: "marif",
     group: "Learning & AI",
     preview: "marif",
+    devicePreview: {
+      tablet: { src: "/screenshots/marif/books-light.jpg", alt: "Marif library screenshot cropped into a portrait tablet mockup", width: 426, height: 922, frameRatio: 3 / 4 },
+      mobile: { src: "/screenshots/marif/chapter-map-light.jpg", alt: "Marif chapter learning path on mobile", width: 426, height: 922 },
+      caption: "Tablet & mobile mockup",
+    },
     caseStudy: "/projects/marif/",
     featured: true,
     category: "AI & Education",
@@ -111,6 +118,11 @@ const projects = [
     id: "education-atlas",
     group: "Data & analysis",
     preview: "atlas",
+    devicePreview: {
+      desktop: { src: "/screenshots/devices/atlas-desktop.jpg", alt: "Education Atlas province map and indicators on desktop", width: 1440, height: 960 },
+      mobile: { src: "/screenshots/devices/atlas-mobile.jpg", alt: "Education Atlas province map on mobile", width: 390, height: 844 },
+      caption: "Desktop & mobile",
+    },
     category: "Data & Education",
     title: "Afghanistan Education Atlas",
     summary: "An interactive map to explore schools, school attendance, and access to internet and devices across Afghanistan.",
@@ -136,6 +148,11 @@ const projects = [
     id: "poetry",
     group: "Data & analysis",
     preview: "poetry",
+    devicePreview: {
+      desktop: { src: "/screenshots/Home-page.png", alt: "English Poetry Explorer desktop application", width: 2558, height: 1488 },
+      mobile: { src: "/screenshots/sentiment-Analysis-page.png", alt: "Poetry sentiment analysis detail cropped into a phone mockup", width: 2556, height: 1492, position: "60% top" },
+      caption: "Desktop & mobile mockup",
+    },
     category: "Data Science",
     title: "English Poetry Explorer",
     summary: "Explore English poems, analyse their tone, and find similar writing.",
@@ -160,29 +177,15 @@ const projects = [
     ],
   },
   {
-    number: "02",
-    id: "ai-review",
-    group: "Learning & AI",
-    preview: "review",
-    category: "AI Evaluation",
-    title: "AI Response Review",
-    summary: "Review AI answers across text, images, and video for accuracy and quality.",
-    contribution: "Applied review rubrics, ranked responses, and flagged factual errors, hallucinations, and bias.",
-    goal: "Improve AI response quality via systematic evaluation and ranking.",
-    work: [
-      "Reviewed 1,000+ AI outputs across text, image, and video tasks.",
-      "Applied rubrics to rank responses and identify hallucinations and bias.",
-      "Flagged factual errors and inconsistencies to improve model quality.",
-    ],
-    tools: ["LLM Evaluation", "AI Annotation", "Ranking", "Quality Review"],
-    result: "Improved consistency and reliability of AI-generated responses.",
-    proof: "Multimodal AI review experience",
-  },
-  {
     number: "03",
     id: "survey-dashboard",
     group: "Data & analysis",
     preview: "dashboard",
+    devicePreview: {
+      desktop: { src: "/dashboard.png", alt: "Survey reporting dashboard on desktop", width: 1537, height: 1023 },
+      mobile: { src: "/dashboard.png", alt: "Survey dashboard detail cropped into a phone mockup", width: 1537, height: 1023, frameRatio: 390 / 844, position: "42% top" },
+      caption: "Desktop & mobile mockup",
+    },
     category: "Data Analysis",
     title: "Survey Dashboard",
     summary: "Turn survey data into clear reports for health and education programmes.",
@@ -206,9 +209,14 @@ const projects = [
     id: "khayat",
     group: "Apps & design",
     preview: "workflow",
+    devicePreview: {
+      desktop: { src: "/screenshots/ekhayat/dashboard.webp", alt: "eKhayat tailoring dashboard with customers, orders, revenue, and order status", width: 1584, height: 764 },
+      mobile: { src: "/screenshots/ekhayat/measurements.webp", alt: "eKhayat measurement illustration cropped into a phone mockup", width: 1584, height: 764, frameRatio: 390 / 844, position: "72% top" },
+      caption: "Desktop & mobile mockup",
+    },
     category: "Product Design",
-    title: "Khayat",
-    summary: "An app design to help tailors organise customers, orders, and measurements.",
+    title: "eKhayat",
+    summary: "A tailoring management app for customers, orders, measurements, and inventory.",
     contribution: "Designed the workflows in Figma and planned the Pashto, Dari, and English experience.",
     goal: "Design a multilingual system for managing tailoring workflows.",
     work: [
@@ -218,7 +226,17 @@ const projects = [
     ],
     tools: ["Figma", "UI/UX", "Product Flow", "Multilingual Design"],
     result: "Simplified order creation and measurement tracking for tailors.",
-    proof: "Figma design proof available",
+    proof: "Product screenshots and Figma design available",
+    screenshots: [
+      "/screenshots/ekhayat/dashboard.webp",
+      "/screenshots/ekhayat/customers.webp",
+      "/screenshots/ekhayat/measurements.webp",
+      "/screenshots/ekhayat/orders.webp",
+      "/screenshots/ekhayat/fabrics.webp",
+      "/screenshots/ekhayat/roles.webp",
+    ],
+    demoLink: "https://ekhayat.com/",
+    demoLabel: "Visit eKhayat ↗",
     link: "https://www.figma.com/design/pLkHln0OtpNKQpiG37GtMQ/Khayat-Tailor-Management-App",
     linkLabel: "View Figma Design ↗",
   },
@@ -227,10 +245,15 @@ const projects = [
     id: "portfolio",
     group: "Apps & design",
     preview: "portfolio",
+    devicePreview: {
+      desktop: { src: "/screenshots/devices/portfolio-desktop.jpg", alt: "Mahmood Basirat portfolio on desktop", width: 1440, height: 960 },
+      mobile: { src: "/screenshots/devices/portfolio-mobile.jpg", alt: "Mahmood Basirat portfolio on mobile", width: 390, height: 844 },
+      caption: "Desktop & mobile",
+    },
     category: "Frontend",
     title: "Personal Portfolio",
     summary: "The website you’re browsing: a home for my work, experience, and CV.",
-    contribution: "Built the React interface, navigation, project galleries, and expandable case studies.",
+    contribution: "Built the React interface, navigation, project galleries, and project detail readers.",
     goal: "Create a clean, recruiter-focused portfolio site.",
     work: [
       "Built responsive React UI for desktop and mobile.",
@@ -293,7 +316,6 @@ export default function MahmoodPortfolio() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
-  const [galleryProject, setGalleryProject] = useState(null);
 
   useEffect(() => {
     runPortfolioDataChecks();
@@ -350,11 +372,11 @@ export default function MahmoodPortfolio() {
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen || galleryProject ? "hidden" : "";
+    document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
-  }, [menuOpen, galleryProject]);
+  }, [menuOpen]);
 
   const scrollTo = (id) => {
     setMenuOpen(false);
@@ -382,26 +404,6 @@ export default function MahmoodPortfolio() {
         .animate-delay-2 { transition-delay: 0.2s; }
         .animate-delay-3 { transition-delay: 0.3s; }
         .animate-delay-4 { transition-delay: 0.4s; }
-
-        .nav {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 100;
-          padding: 20px 48px;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          transition: background 0.3s, padding 0.3s, border-color 0.3s;
-        }
-
-        .nav.scrolled {
-          background: rgba(7, 9, 15, 0.9);
-          backdrop-filter: blur(18px);
-          border-bottom: 1px solid var(--border);
-          padding: 13px 48px;
-        }
 
         .nav-brand {
           font-family: var(--mono);
@@ -478,13 +480,15 @@ export default function MahmoodPortfolio() {
 
         .mobile-menu-panel {
           position: absolute;
-          top: 0;
-          right: 0;
-          width: min(280px, 82vw);
-          height: 100%;
-          background: #0d1117;
-          border-left: 1px solid var(--border);
-          padding: 80px 28px 40px;
+          top: max(88px, calc(env(safe-area-inset-top) + 76px));
+          right: 12px;
+          width: min(280px, calc(100vw - 24px));
+          max-height: calc(100dvh - 112px - env(safe-area-inset-top));
+          overflow-y: auto;
+          background: var(--bg2);
+          border: 1px solid var(--nav-rim);
+          border-radius: 24px;
+          padding: 54px 24px 24px;
           display: flex;
           flex-direction: column;
           gap: 8px;
@@ -727,7 +731,7 @@ export default function MahmoodPortfolio() {
           max-width: 1120px;
           margin: 0 auto;
           padding: 72px 48px;
-          scroll-margin-top: 85px;
+          scroll-margin-top: 110px;
         }
 
         .divider {
@@ -757,7 +761,8 @@ export default function MahmoodPortfolio() {
           font-weight: 800;
           color: #ffffff;
           letter-spacing: -0.02em;
-          flex-shrink: 0;
+          flex-shrink: 1;
+          min-width: 0;
         }
 
         .sec-line {
@@ -952,7 +957,7 @@ export default function MahmoodPortfolio() {
           gap: 18px;
         }
 
-        #projects { scroll-margin-top: 80px; }
+        #projects { scroll-margin-top: 110px; }
 
         .project-card-clean {
           background: var(--surface);
@@ -1147,64 +1152,6 @@ export default function MahmoodPortfolio() {
           transform: translateY(-1px);
         }
 
-        .gallery-overlay {
-          position: fixed;
-          inset: 0;
-          z-index: 200;
-          background: rgba(3, 6, 12, 0.88);
-          backdrop-filter: blur(8px);
-          padding: 32px;
-          overflow-y: auto;
-        }
-
-        .gallery-modal {
-          max-width: 1100px;
-          margin: 0 auto;
-          background: var(--surface);
-          border: 1px solid var(--border);
-          border-radius: 18px;
-          padding: 22px;
-          box-shadow: 0 24px 80px rgba(0,0,0,0.45);
-        }
-
-        .gallery-header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          gap: 16px;
-          margin-bottom: 18px;
-        }
-
-        .gallery-title {
-          font-size: 1.2rem;
-          font-weight: 800;
-          color: #ffffff;
-        }
-
-        .gallery-close {
-          background: var(--bg2);
-          border: 1px solid var(--border);
-          color: #ffffff;
-          border-radius: 8px;
-          width: 36px;
-          height: 36px;
-          cursor: pointer;
-          font-size: 1rem;
-        }
-
-        .gallery-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 14px;
-        }
-
-        .gallery-img {
-          width: 100%;
-          border-radius: 12px;
-          border: 1px solid var(--border);
-          background: var(--bg2);
-        }
-
         .edu-card {
           padding: 30px;
           display: flex;
@@ -1353,11 +1300,9 @@ export default function MahmoodPortfolio() {
         @media (max-width: 768px) {
           .project-card-featured .project-work-list { columns: 1; }
           .project-card-featured .project-top-row { flex-wrap: wrap; }
-          .nav { padding: 14px 20px; }
-          .nav.scrolled { padding: 11px 20px; }
           .nav-links { display: none; }
           .hamburger { display: flex; }
-          .hero { padding: 90px 20px 48px; }
+          .hero { padding: 112px 20px 48px; }
           .hero-inner { grid-template-columns: 1fr; gap: 36px; }
           .hero-name { font-size: 2.6rem; }
           .wrap { padding: 52px 20px; }
@@ -1371,16 +1316,13 @@ export default function MahmoodPortfolio() {
           .exp-period { width: fit-content; }
           .contact-box { grid-template-columns: 1fr; padding: 30px 22px; gap: 32px; }
           .footer { flex-direction: column; gap: 8px; padding: 20px; text-align: center; }
-          .gallery-overlay { padding: 16px; }
-          .gallery-modal { padding: 16px; }
-          .gallery-grid { grid-template-columns: 1fr; }
         }
       `}</style>
 
-      <div style={{ minHeight: "100vh", color: "#ffffff" }}>
+      <div style={{ minHeight: "100vh", color: "var(--text)" }}>
         <div className={`mobile-menu ${menuOpen ? "open" : ""}`} onClick={closeMenu}>
           <div className="mobile-menu-panel" onClick={(event) => event.stopPropagation()}>
-            <button className="mobile-menu-close" type="button" onClick={closeMenu}>
+            <button className="mobile-menu-close" type="button" aria-label="Close navigation" onClick={closeMenu}>
               ✕
             </button>
             <a href="#about" onClick={(event) => { event.preventDefault(); scrollTo("about"); }}>About</a>
@@ -1393,7 +1335,7 @@ export default function MahmoodPortfolio() {
           </div>
         </div>
 
-        <nav className={`nav ${scrolled ? "scrolled" : ""}`}>
+        <nav className={`nav floating-nav ${scrolled ? "scrolled" : ""}`} aria-label="Main navigation">
           <div className="nav-brand">mahmood.basirat</div>
           <div className="nav-links">
             <a href="#about" onClick={(event) => { event.preventDefault(); scrollTo("about"); }} className={activeSection === "about" ? "active" : ""}>About</a>
@@ -1401,6 +1343,8 @@ export default function MahmoodPortfolio() {
             <a href="#projects" onClick={(event) => { event.preventDefault(); scrollTo("projects"); }} className={activeSection === "projects" ? "active" : ""}>Projects</a>
             <a href="#education" onClick={(event) => { event.preventDefault(); scrollTo("education"); }} className={activeSection === "education" ? "active" : ""}>Education</a>
           </div>
+          <div className="nav-actions">
+          <ThemeSwitcher />
           <button
             className={`hamburger ${menuOpen ? "open" : ""}`}
             type="button"
@@ -1415,6 +1359,7 @@ export default function MahmoodPortfolio() {
             <span />
             <span />
           </button>
+          </div>
         </nav>
 
         <section className="hero">
@@ -1563,7 +1508,7 @@ export default function MahmoodPortfolio() {
             Learning tools, data projects, and useful apps. Choose a category to explore.
           </div>
 
-          <ProjectGallery projects={projects} onViewScreenshots={setGalleryProject} />
+          <ProjectGallery projects={projects} />
         </section>
 
         <div className="divider" />
@@ -1673,22 +1618,6 @@ export default function MahmoodPortfolio() {
             </div>
           </div>
         </section>
-
-        {galleryProject ? (
-          <div className="gallery-overlay" onClick={() => setGalleryProject(null)}>
-            <div className="gallery-modal glass-card" onClick={(event) => event.stopPropagation()}>
-              <div className="gallery-header">
-                <div className="gallery-title">{galleryProject.title} Screenshots</div>
-                <button className="gallery-close" type="button" onClick={() => setGalleryProject(null)}>✕</button>
-              </div>
-              <div className="gallery-grid">
-                {galleryProject.screenshots.map((src, index) => (
-                  <img key={src} src={src} alt={`${galleryProject.title} screenshot ${index + 1}`} className="gallery-img" />
-                ))}
-              </div>
-            </div>
-          </div>
-        ) : null}
 
         <footer className="footer">
           <span className="footer-brand">mahmood.basirat</span>

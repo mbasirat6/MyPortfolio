@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import ProjectCard from "./ProjectCard";
+import ProjectDetails from "./ProjectDetails";
 
 const categories = ["All", "Learning & AI", "Data & analysis", "Apps & design"];
 
-export default function ProjectGallery({ projects, onViewScreenshots }) {
+export default function ProjectGallery({ projects }) {
   const [category, setCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState(null);
   const visibleProjects = projects.filter(project => category === "All" || project.group === category);
 
   useEffect(() => {
@@ -35,8 +37,9 @@ export default function ProjectGallery({ projects, onViewScreenshots }) {
       </div>
       <p className="project-sr-only" role="status">{visibleProjects.length} projects shown. {category}.</p>
       <div id="project-results" className="project-gallery-grid">
-        {visibleProjects.map(project => <ProjectCard key={project.id} project={project} onViewScreenshots={onViewScreenshots} />)}
+        {visibleProjects.map(project => <ProjectCard key={project.id} project={project} onReadMore={setSelectedProject} />)}
       </div>
+      {selectedProject && <ProjectDetails project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </div>
   );
 }

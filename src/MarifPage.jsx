@@ -1,15 +1,18 @@
 import MarifCaseStudy from "./MarifCaseStudy";
 import "./MarifPage.css";
 import useHashNavigation from "./useHashNavigation";
+import ThemeSwitcher from "./ThemeSwitcher";
+import "./FloatingNav.css";
 
 export default function MarifPage() {
   useHashNavigation();
   return (
     <>
       <a href="#marif" className="case-skip-link">Skip to case study</a>
-      <header className="case-page-header">
+      <header className="case-page-header floating-nav">
         <a className="case-page-brand" href="/">mahmood.basirat</a>
-        <a href="/#projects">← Back to projects</a>
+        <a className="case-page-back" href="/#projects">← Back to projects</a>
+        <ThemeSwitcher />
       </header>
       <main className="case-page-main">
         <nav className="case-page-contents" aria-label="Case study sections">

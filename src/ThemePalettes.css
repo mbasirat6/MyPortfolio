@@ -8,6 +8,10 @@
   --button-text: #fff; --card-rgb: 255 255 255; --card-opacity: .46;
   --card-rim: rgb(125 140 164 / .3); --inset: rgb(255 255 255 / .34);
   --card-shadow: rgb(43 52 70 / .1);
+  --badge-tint: 52 90 134;
+  --badge-dot-tint: 38 123 83;
+  --skill-dev: #247e77; --skill-ai: #7760b5; --skill-design: #a57719;
+  --skill-soft: #348455; --skill-data: #347fa8; --skill-lang: #b35080;
   --pearl-reflection: linear-gradient(135deg, rgb(255 255 255 / .72), rgb(255 255 255 / .08) 42%, rgb(210 221 240 / .18));
   --pearl-shadow: inset 0 1px 0 rgb(255 255 255 / .95), inset 1px 0 0 rgb(255 255 255 / .6), inset 0 -1px 0 rgb(126 143 170 / .12), 0 12px 36px var(--card-shadow);
 }
@@ -43,7 +47,7 @@
     color: var(--button-text); background: var(--accent); border-color: var(--accent);
   }
   .btn-primary:hover, .glass-card .btn-primary:hover, .marif-case-toggle:hover { background: var(--accent-hover); }
-  .hero-badge { background: rgb(255 255 255 / .42); border-color: var(--card-rim); box-shadow: inset 0 1px 0 rgb(255 255 255 / .8); }
+  .hero-badge { background: rgb(255 255 255 / .78); border-color: rgb(52 90 134 / .36); box-shadow: inset 0 1px 0 rgb(255 255 255 / .8); }
   .project-filters button[aria-pressed="true"] { background: var(--accent); color: var(--button-text); border-color: var(--accent); }
 
   .theme-trigger, .theme-panel, .mobile-menu-panel {

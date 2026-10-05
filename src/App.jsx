@@ -268,13 +268,13 @@ const projects = [
   },
 ];
 
-const catColors = {
-  dev: { bg: "#092c2b", border: "#1c6662", text: "#7de2d7" },
-  data: { bg: "#0c2340", border: "#1a4a7a", text: "#7ec8f0" },
-  ai: { bg: "#16103a", border: "#2d2580", text: "#a89cf7" },
-  design: { bg: "#2a1c00", border: "#5a3c00", text: "#f0b429" },
-  soft: { bg: "#0a2818", border: "#165c30", text: "#4ade80" },
-  lang: { bg: "#2a0f1a", border: "#5c1a35", text: "#f472b6" },
+const skillCategories = {
+  dev: { label: "Development", color: "var(--skill-dev, #7de2d7)" },
+  ai: { label: "AI", color: "var(--skill-ai, #a89cf7)" },
+  design: { label: "Design", color: "var(--skill-design, #f0b429)" },
+  soft: { label: "Leadership & Teaching", color: "var(--skill-soft, #4ade80)" },
+  data: { label: "Data", color: "var(--skill-data, #7ec8f0)" },
+  lang: { label: "Languages", color: "var(--skill-lang, #f472b6)" },
 };
 
 function SectionHeader({ number, title }) {
@@ -543,11 +543,15 @@ export default function MahmoodPortfolio() {
         }
 
         .hero-badge {
+          position: relative;
+          isolation: isolate;
+          overflow: hidden;
           display: inline-flex;
           align-items: center;
           gap: 8px;
           font-family: var(--mono);
           font-size: 0.72rem;
+          font-weight: 500;
           color: var(--accent);
           background: var(--accent-glow);
           border: 1px solid rgba(59, 130, 246, 0.3);
@@ -555,19 +559,48 @@ export default function MahmoodPortfolio() {
           padding: 5px 14px;
           margin-bottom: 24px;
           letter-spacing: 0.04em;
+          animation: badge-glow 4.8s ease-in-out infinite;
+        }
+
+        .hero-badge::before {
+          content: "";
+          position: absolute;
+          z-index: -1;
+          inset: -30% auto -30% 0;
+          width: 45%;
+          background: linear-gradient(105deg, transparent, rgb(var(--badge-tint, 77 158 255) / .24), rgb(255 255 255 / .3), transparent);
+          transform: translateX(-160%) skewX(-18deg);
+          pointer-events: none;
+          animation: badge-shimmer 4.8s ease-in-out infinite;
         }
 
         .hero-badge-dot {
+          flex-shrink: 0;
           width: 6px;
           height: 6px;
           border-radius: 50%;
           background: #22c55e;
-          animation: pulse 1.8s ease-in-out infinite;
+          animation: badge-beacon 2.4s ease-out infinite;
         }
 
-        @keyframes pulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.4; transform: scale(0.8); }
+        @keyframes badge-glow {
+          0%, 100% { box-shadow: inset 0 1px 0 rgb(255 255 255 / .24), 0 0 0 1px rgb(var(--badge-tint, 77 158 255) / .08), 0 0 8px rgb(var(--badge-tint, 77 158 255) / .08); }
+          35%, 50% { box-shadow: inset 0 1px 0 rgb(255 255 255 / .55), 0 0 0 1px rgb(var(--badge-tint, 77 158 255) / .3), 0 0 20px rgb(var(--badge-tint, 77 158 255) / .22); }
+        }
+
+        @keyframes badge-shimmer {
+          0%, 12% { transform: translateX(-160%) skewX(-18deg); }
+          52%, 100% { transform: translateX(340%) skewX(-18deg); }
+        }
+
+        @keyframes badge-beacon {
+          0% { box-shadow: 0 0 0 0 rgb(var(--badge-dot-tint, 34 197 94) / .55); }
+          65%, 100% { box-shadow: 0 0 0 6px rgb(var(--badge-dot-tint, 34 197 94) / 0); }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .hero-badge, .hero-badge::before, .hero-badge-dot { animation: none; }
+          .hero-badge::before { display: none; }
         }
 
         .hero-name {
@@ -834,21 +867,37 @@ export default function MahmoodPortfolio() {
         .legend-dot {
           width: 8px;
           height: 8px;
-          border-radius: 2px;
+          flex-shrink: 0;
+          border-radius: 50%;
+          background: var(--skill-color);
         }
 
         .chips {
           display: flex;
           flex-wrap: wrap;
-          gap: 8px;
+          gap: 10px;
+          padding: 0;
+          margin: 0;
+          list-style: none;
         }
 
-        .chip {
-          padding: 7px 16px;
-          border-radius: 6px;
+        .chip.glass-card {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          min-height: 42px;
+          max-width: 100%;
+          padding: 9px 15px;
+          border-radius: 14px;
           font-size: 0.875rem;
           font-weight: 500;
-          border: 1px solid;
+          line-height: 1.5;
+          color: var(--text-secondary);
+        }
+
+        .chip-label {
+          min-width: 0;
+          overflow-wrap: anywhere;
         }
 
         .tools-grid {
@@ -1366,7 +1415,7 @@ export default function MahmoodPortfolio() {
           <div className="hero-inner">
             <div>
               <div className="hero-badge">
-                <span className="hero-badge-dot" />
+                <span className="hero-badge-dot" aria-hidden="true" />
                 Founder &amp; President at Khwazon
               </div>
               <h1 className="hero-name">Mahmood Basirat</h1>
@@ -1437,30 +1486,24 @@ export default function MahmoodPortfolio() {
         <section id="skills" className="wrap">
           <SectionHeader number="04" title="Skills" />
           <div className="legend animate animate-delay-1">
-            {[
-              ["dev", "#7de2d7", "Development"],
-              ["ai", "#a89cf7", "AI"],
-              ["design", "#f0b429", "Design"],
-              ["soft", "#4ade80", "Leadership & Teaching"],
-              ["data", "#7ec8f0", "Data"],
-              ["lang", "#f472b6", "Languages"],
-            ].map(([cat, color, label]) => (
-              <div key={cat} className="legend-item">
-                <div className="legend-dot" style={{ background: color }} />
+            {Object.entries(skillCategories).map(([cat, { color, label }]) => (
+              <div key={cat} className="legend-item" style={{ "--skill-color": color }}>
+                <span className="legend-dot" aria-hidden="true" />
                 {label}
               </div>
             ))}
           </div>
-          <div className="chips animate animate-delay-2">
+          <ul className="chips animate animate-delay-2" aria-label="Skills">
             {skills.map((skill) => {
-              const colors = catColors[skill.cat];
+              const category = skillCategories[skill.cat];
               return (
-                <span key={skill.name} className="chip" style={{ background: colors.bg, borderColor: colors.border, color: colors.text }}>
-                  {skill.name}
-                </span>
+                <li key={skill.name} className="chip glass-card" style={{ "--skill-color": category.color }}>
+                  <span className="legend-dot" aria-hidden="true" />
+                  <span className="chip-label"><span className="project-sr-only">{category.label}: </span>{skill.name}</span>
+                </li>
               );
             })}
-          </div>
+          </ul>
         </section>
 
         <div className="divider" />

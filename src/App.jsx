@@ -24,12 +24,10 @@ const skills = [
   { name: "Data Analysis", cat: "data" },
   { name: "Data Cleaning", cat: "data" },
   { name: "Dashboard Building", cat: "data" },
-  { name: "Pashto", cat: "lang" },
-  { name: "Dari", cat: "lang" },
-  { name: "English", cat: "lang" },
-  { name: "Hindi", cat: "lang" },
-  { name: "Urdu", cat: "lang" },
-  { name: "Persian", cat: "lang" },
+  { name: "Pashto (native)", cat: "lang" },
+  { name: "Dari (fluent)", cat: "lang" },
+  { name: "English (fluent)", cat: "lang" },
+  { name: "Urdu (fluent)", cat: "lang" },
 ];
 
 const toolGroups = [
@@ -52,7 +50,7 @@ const experience = [
   {
     role: "Founder & President",
     company: "Khwazon · Kabul, Afghanistan",
-    period: "2026 – Present",
+    period: "Apr 2026 – Present",
     website: "https://khwazon.com/",
     points: [
       "Founded and manage a software studio focused on websites, applications, and business systems.",
@@ -66,9 +64,22 @@ const experience = [
     company: "Freelance · Remote",
     period: "Dec 2025 – Present",
     points: [
-      "Evaluated AI model outputs and provided feedback to improve response quality.",
-      "Performed annotation, classification, and ranking tasks across text, image, and video datasets.",
-      "Identified hallucinations, bias, and factual inconsistencies in AI responses.",
+      "Analyze AI-generated dashboards and provide written feedback on how clearly and consistently they present information.",
+      "Evaluate AI model outputs and provide feedback to improve response quality.",
+      "Perform annotation, classification, and ranking tasks across text, image, and video datasets.",
+      "Identify hallucinations, bias, and factual inconsistencies in AI responses.",
+    ],
+  },
+  {
+    role: "Data Analyst Assistant (previously Intern)",
+    company: "HARAKAT · Kabul, Afghanistan",
+    period: "May 2024 – May 2025",
+    points: [
+      "Earlier internship: May–October 2022 (six months).",
+      "Designed and managed Kobo surveys to support education-sector data collection.",
+      "Collected, cleaned and validated data before analysis, using Python to identify patterns and insights.",
+      "Developed interactive Power BI dashboards to track education-project performance and key indicators.",
+      "Collaborated with field teams on data collection and reporting.",
     ],
   },
   {
@@ -76,6 +87,7 @@ const experience = [
     company: "SPS Sofia Private School · Kabul, Afghanistan",
     period: "2019 – August 2021",
     points: [
+      "Maintained student records in the school's software system for weekly grading.",
       "Taught English to high school students, focusing on paragraph, essay, and story writing.",
       "Designed lesson plans, assessments, and examination papers.",
       "Founded a newsletter club and trained students to prepare a weekly newspaper. Members interviewed students and teachers, and the school printed each issue.",
@@ -182,27 +194,27 @@ const projects = [
     group: "Data & analysis",
     preview: "dashboard",
     devicePreview: {
-      desktop: { src: "/dashboard.png", alt: "Survey reporting dashboard on desktop", width: 1537, height: 1023 },
-      mobile: { src: "/dashboard.png", alt: "Survey dashboard detail cropped into a phone mockup", width: 1537, height: 1023, frameRatio: 390 / 844, position: "42% top" },
-      caption: "Desktop & mobile mockup",
+      desktop: { src: "/dashboard.png", alt: "Survey dashboard demonstration using sample data on desktop", width: 1537, height: 1023 },
+      mobile: { src: "/dashboard.png", alt: "Demo-data survey dashboard cropped into a phone mockup", width: 1537, height: 1023, frameRatio: 390 / 844, position: "42% top" },
+      caption: "Demo data · Desktop & mobile mockup",
     },
-    category: "Data Analysis",
-    title: "Survey Dashboard",
-    summary: "Turn survey data into clear reports for health and education programmes.",
-    contribution: "Cleaned KOBO data, analysed trends, and built Power BI dashboards for programme reporting.",
-    context: "The NGO needed structured reporting across regions. I connected data cleaning and validation to analysis and dashboards for tracking beneficiaries, services, and programme performance.",
-    goal: "Turn field survey data into actionable insights for NGO reporting.",
+    category: "Dashboard demonstration",
+    title: "Survey Dashboard (Demo)",
+    summary: "A programme-reporting dashboard preview using sample health, education and survey data.",
+    contribution: "Portfolio demonstration of a programme-reporting layout using sample data.",
+    context: "This portfolio example uses sample values for health, education and survey indicators in Afghanistan.",
+    goal: "Illustrate how programme indicators can be presented together in a reporting dashboard.",
     work: [
-      "Cleaned and validated KOBO survey data from field operations.",
-      "Built dashboards tracking 28K+ beneficiaries, 12K+ services, 8K+ students.",
-      "Analyzed trends by region, time, and sector to support decisions.",
+      "Illustrates beneficiary, service and student indicators using demo values.",
+      "Shows example time trends, sector breakdowns and province summaries.",
+      "Pairs headline indicators with trend charts, sector breakdowns and province tables.",
     ],
-    tools: ["Python", "Power BI", "Excel", "KOBO / ODK"],
-    result: "Delivered real-world dashboard reporting for NGO programs in Afghanistan.",
-    proof: "Dashboard preview available",
+    tools: ["Dashboard design", "Data visualization", "Sample data"],
+    result: "A static dashboard preview showing how programme information can be organized for reporting.",
+    proof: "Sample data · Dashboard preview",
     image: "/dashboard.png",
     link: "/dashboard.png",
-    linkLabel: "View Dashboard ↗",
+    linkLabel: "View demo preview ↗",
   },
   {
     number: "04",
@@ -1472,7 +1484,7 @@ export default function MahmoodPortfolio() {
           <div className="about-grid">
             <div className="about-card glass-card animate animate-delay-1">
               <div className="about-card-label">// who i am</div>
-              <p>I'm a full-stack developer and the founder of Khwazon, based in Kabul. My background brings together classroom teaching, AI model evaluation, and building applications for education and business.</p>
+              <p>I'm a full-stack developer and the founder of Khwazon, based in Kabul. My background brings together programme data management, classroom teaching, AI model evaluation, and building applications for education and business.</p>
             </div>
             <div className="about-card glass-card animate animate-delay-2">
               <div className="about-card-label">// what i do</div>

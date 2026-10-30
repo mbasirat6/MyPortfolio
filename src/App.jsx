@@ -1253,7 +1253,7 @@ export default function MahmoodPortfolio() {
 
         .hire-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 14px;
         }
 
@@ -1432,7 +1432,7 @@ export default function MahmoodPortfolio() {
               </div>
               <h1 className="hero-name">Mahmood Basirat</h1>
               <p className="hero-title">
-                <strong>Full-stack Developer</strong> &nbsp;·&nbsp; <strong>AI Model Evaluator</strong>
+                <strong>Full-stack Developer</strong> &nbsp;·&nbsp; <strong>Data Analyst</strong> &nbsp;·&nbsp; <strong>AI Model Evaluator</strong>
               </p>
               <p className="hero-desc">
                 I build software for education and everyday business needs. I lead Khwazon and am developing Marif, an AI-supported learning platform for Afghan students studying in Pashto and Dari.
@@ -1624,11 +1624,16 @@ export default function MahmoodPortfolio() {
               <p className="hire-desc">Build interfaces, back-end functionality, and connected application workflows for learning platforms and business software, with attention to multilingual use.</p>
             </div>
             <div className="hire-card glass-card animate animate-delay-2">
+              <div className="hire-icon">📊</div>
+              <div className="hire-title">Data Analysis &amp; Reporting</div>
+              <p className="hire-desc">Clean and validate survey data, analyze datasets with Python, and create Power BI dashboards. Turn findings into clear summaries and coordinate with field teams on data collection and reporting.</p>
+            </div>
+            <div className="hire-card glass-card animate animate-delay-3">
               <div className="hire-icon">🤖</div>
               <div className="hire-title">AI Evaluation & Quality Review</div>
               <p className="hire-desc">Evaluate AI responses across text, image, and video tasks. Apply review criteria, compare outputs, and flag factual errors, hallucinations, and bias.</p>
             </div>
-            <div className="hire-card glass-card animate animate-delay-3">
+            <div className="hire-card glass-card animate animate-delay-4">
               <div className="hire-icon">🧩</div>
               <div className="hire-title">Company & Team Management</div>
               <p className="hire-desc">Manage Khwazon's operations, assign team tasks, communicate with clients, prepare proposals, and review the quality of the software we build.</p>

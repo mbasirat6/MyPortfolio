@@ -73,9 +73,9 @@ const experience = [
   {
     role: "Data Analyst Assistant (previously Intern)",
     company: "HARAKAT · Kabul, Afghanistan",
-    period: "May 2024 – May 2025",
+    period: "July 2022 – May 2025",
     points: [
-      "Earlier internship: May–October 2022 (six months).",
+      "Earlier internship: January–June 2022 (six months).",
       "Designed and managed Kobo surveys to support education-sector data collection.",
       "Collected, cleaned and validated data before analysis, using Python to identify patterns and insights.",
       "Developed interactive Power BI dashboards to track education-project performance and key indicators.",
